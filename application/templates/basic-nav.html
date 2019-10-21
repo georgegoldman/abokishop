@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Abokishop</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap.min.css') }}">
+    <link rel="stylesheet" href="/css/master.css">
+  </head>
+  <body>
+
+    <div class="container">
+
+      <div class="row">
+
+        <div class="col-lg-1">
+
+          <ul class="nav nav-pills nav-stacked">
+
+            <li><a href="/">home</a></li>
+
+          </ul>
+
+        </div>
+
+      </div>
+
+      <div class="row">
+
+        <div class="col-lg-2">
+
+          <ul class="nav nav-pills nav-stacked">
+
+          {% if current_user.is_authenticated %}
+          
+            <li><a href="#">profile</a></li>
+
+            <li><a href="/logout">logout</a></li>
+
+          {% endif %}
+
+          </ul>
+
+        </div>
+
+        <div class="col-lg-9">
+
+          {% with messages = get_flashed_messages() %}
+
+            {% if messages %}
+
+              {{messages[0]}}
+
+            {% endif %}
+
+          {% endwith %}
+
+          {% block content %}
+          {% endblock %}
+
+        </div>
+
+        <div class="col-lg-1">
+
+          <ul class="nav nav-pills nav-stacked">
+
+            <li><a href="/login">login</a></li>
+            <li><a href="/signup">signup</a></li>
+
+          </ul>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </body>
+</html>
