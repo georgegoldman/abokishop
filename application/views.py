@@ -6,7 +6,7 @@ view = Blueprint('view', __name__)
 
 @view.route('/')
 def abokishop():
-    return render_template('basic-nav.html', current_user=current_user)
+    return render_template('welcome.html', current_user=current_user)
 
 @view.route('/signup')
 def signup():

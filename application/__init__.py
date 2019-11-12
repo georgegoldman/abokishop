@@ -1,3 +1,4 @@
+import os
 from flask import Flask, Markup
 from flask_login import LoginManager
 from flask_sqlalchemy import SQLAlchemy
@@ -6,8 +7,8 @@ from flask_sqlalchemy import SQLAlchemy
 app = Flask(__name__)
 
 app.config['DEBUG']=1
-app.config['SECRET_KEY']='32RERFWEG2'
-app.config['SQLALCHEMY_DATABASE_URI']='postgresql://postgres:password@localhost/abokishop'
+app.config['SECRET_KEY']=os.environ.get('SECRET')
+app.config['SQLALCHEMY_DATABASE_URI']=os.environ.get('DATABASE_URL')
 
 db = SQLAlchemy(app)
 
