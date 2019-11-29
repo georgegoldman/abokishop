@@ -1,5 +1,4 @@
 body{
-    background-color: rgb(82, 59, 18) ;
     color: #337ab7;
 }
 @media(max-width: 800px){
@@ -43,7 +42,7 @@ body{
     #acct-nav{
         margin-top: 3mm;
     }
-    
+
 }
 
 legend{
@@ -77,4 +76,3 @@ input{
 #usr-prf{
     border:thin solid whitesmoke;
 }
-
