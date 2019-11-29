@@ -8,83 +8,86 @@
   </head>
   <body>
 
-      <div class="row no-gutters">
+    <div class="container">
 
-        <div class="col-lg-2 col-xs-12 col-sm-12">
+      <div class="row-no-gutters">
 
-          <div id="nav">
+          <div class="col-lg-2 col-xs-12 col-sm-12">
 
-            <ul class="nav nav-pills nav-stacked">
+            <div id="nav">
 
-              {% if not current_user.is_authenticated %}
-              <li><a href="/">home</a></li>
-              {% endif %}
+              <ul class="nav nav-pills nav-stacked">
 
-              {% if current_user.is_authenticated %}
-              <li><a href="/home">home</a></li>
-              {% endif %}
+                {% if not current_user.is_authenticated %}
+                <li><a href="/">home</a></li>
+                {% endif %}
 
-            </ul>
+                {% if current_user.is_authenticated %}
+                <li><a href="/home">home</a></li>
+                {% endif %}
 
-          </div>
+              </ul>
 
-        {% if current_user.is_authenticated %}
+            </div>
 
-        <div class="col-lg-10  col-xm-12">
+          {% if current_user.is_authenticated %}
 
-          <div id="usr-prf">
+          <div class="col-lg-10  col-xm-12">
 
-            hello
+            <div id="usr-prf">
 
-          </div>
-
-        </div>
-
-        <div class="col-lg-1 col-xs-12 col-sm-9">
-
-          <div id="acct-nav">
-
-            <ul class="nav nav-pills nav-stacked">
-
-              <li><a href="#">My shop</a></li>
-
-              <li><a href="/logout">logout</a></li>
-
-            </ul>
-
-          </div>
-
-        </div>
-        {% endif %}
-
-        <div class="col-lg-8 col-xs-12 col-sm-9">
-
-          <div class="col-lg-offset-2">
-
-            <div id="flsh-msg">
-
-              {% with messages = get_flashed_messages() %}
-
-              {% if messages %}
-
-                {{messages[0]}}
-
-              {% endif %}
-
-              {% endwith %}
+              hello
 
             </div>
 
           </div>
 
-          {% block content %}
-          {% endblock %}
+          <div class="col-lg-1 col-xs-12 col-sm-9">
+
+            <div id="acct-nav">
+
+              <ul class="nav nav-pills nav-stacked">
+
+                <li><a href="#">My shop</a></li>
+
+                <li><a href="/logout">logout</a></li>
+
+              </ul>
+
+            </div>
+
+          </div>
+          {% endif %}
+
+          <div class="col-lg-8 col-xs-12 col-sm-9">
+
+            <div class="col-lg-offset-2">
+
+              <div id="flsh-msg">
+
+                {% with messages = get_flashed_messages() %}
+
+                {% if messages %}
+
+                  {{messages[0]}}
+
+                {% endif %}
+
+                {% endwith %}
+
+              </div>
+
+            </div>
+
+            {% block content %}
+            {% endblock %}
+
+          </div>
 
         </div>
 
       </div>
 
     </div>
-
   </body>
 </html>
