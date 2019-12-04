@@ -1,7 +1,6 @@
 import os
 from flask import Flask, Markup
 from flask_login import LoginManager
-from flask_simple_geoip import SimpleGeoIP
 from flask_sqlalchemy import SQLAlchemy
 
 
@@ -16,7 +15,6 @@ app.config['SQLALCHEMY_DATABASE_URI']=os.environ.get('DATABASE_URL')
 
 
 db = SQLAlchemy(app)
-simple_geoip = SimpleGeoIP(app)
 
 from application import models
 db.create_all()
