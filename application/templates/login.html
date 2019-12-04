@@ -2,17 +2,26 @@
 
 {% block content %}
 
-  <div id="formbox">
+  <div class="">
 
-      <form class="" action="/login" method="post" >
+    <img id="img-signup" src="{{ url_for('static', filename='img/food-stall-with-cupcakes-and-sweets-fixed-market-vector-18094409.jpg')}}" alt="" srcset="">
 
-        <legend>login</legend>
-    
+  </div>
+
+  <div class="col-lg-6 col-xs-12 col-sm-12">
+
+    <form class="" action="/login" method="post" >
+
+      <legend>login</legend>
+  
+      <fieldset>
+
         <div class="input-group col-sm-9 col-xs-12 col-lg-12">
     
-          {{form.email(class='form-control input-lg', placeholder='Enter email')}}
+          {{form.email(class='form-control input-lg col-lg-12', placeholder='Enter email')}}
     
-          <ul>
+          <div class="col-sm-9 col-xs-12 col-lg-12">
+            <ul>
     
             {% for error in form.email.errors%}
     
@@ -21,14 +30,17 @@
             {% endfor %}
     
           </ul>
+          </div>
     
-        </div><br>
+        </div>
     
-        <div class="input-group col-sm-9 col-xs-12 col-lg-12">
+        <div class="input-group col-sm-12 col-xs-12 col-lg-12">
     
           {{form.password(class='form-control input-lg', placeholder='Enter password')}}
     
-          <ul>
+          <div class="col-sm-12 col-xs-12 col-lg-12">
+
+            <ul>
     
             {% for error in form.password.errors %}
     
@@ -37,21 +49,27 @@
             {% endfor %}
     
           </ul>
-    
-        </div><br>
-    
-        <div class="input-group col-sm-9 col-xs-12 col-lg-12">
-    
-          {{form.submit(class='btn btn-lg btn-primary col-sm-9 col-xs-12 col-lg-12')}}
+
+          </div>
     
         </div>
     
-        {{form.csrf_token  }}
+        <div class="input-group col-lg-12 col-sm-12 col-xs-12">
     
-      </form>
+          {{form.submit(class='btn col-lg-12 btn-primary col-sm-9 col-xs-12')}}
 
-      <a class="btn btn-primary btn-lg col-sm-9 col-xs-12 col-lg-12" href="/signup">signup</a>
+        </div>      
+    
+        {{form.csrf_token  }}
+
+      </fieldset>
+  
+
+    </form>
+
 
   </div>
+
+  
 
 {% endblock %}

@@ -1,0 +1,44 @@
+@media (min-width: 900px){
+    #img-signup{
+        position: relative;
+        left: 1.3cm;
+        height: 2in;
+        width: 3in;
+    }
+    
+    #v-pills-tab, #v-pills-tabContent{
+        margin-top: 1.5cm;
+    }
+
+    #msg{
+        margin-left: 1cm;
+    }
+
+    #v-pills-home{
+        position: relative;
+        left: 4.5in;
+        top: 2cm;
+    }
+}
+/* nav{
+    position: fixed;
+} */
+
+#v-pills-tab{
+    /* position: fixed; */
+    border-right:3px solid lightblue;
+    height: 100vh;
+}
+
+#v-pills-child-tab:active{
+    background: lightblue !important;
+}
+
+#welcome{
+
+    height: 100vh;
+    margin-left: -4in;
+    margin-top: -1in;
+    background-image: url("/static/img/quwirpvb.svg");
+    background-repeat: no-repeat;
+}

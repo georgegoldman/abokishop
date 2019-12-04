@@ -1,16 +1,22 @@
 import os
 from flask import Flask, Markup
 from flask_login import LoginManager
+from flask_simple_geoip import SimpleGeoIP
 from flask_sqlalchemy import SQLAlchemy
 
 
 app = Flask(__name__)
 
 app.config['DEBUG']=1
+app.config["GEOIPIFY_API_KEY"] = "8.8.8.8"
 app.config['SECRET_KEY']=os.environ.get('SECRET')
 app.config['SQLALCHEMY_DATABASE_URI']=os.environ.get('DATABASE_URL')
+# app.config['SECRET_KEY'] = 'negjrhi52452325'
+# app.config['SQLALCHEMY_DATABASE_URI'] ='postgresql://postgres:password@localhost/abokishop'
+
 
 db = SQLAlchemy(app)
+simple_geoip = SimpleGeoIP(app)
 
 from application import models
 db.create_all()

@@ -2,68 +2,57 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Abokishop</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/master.css') }}">
   </head>
   <body>
 
-    <div class="row no-gutters">
+    <div class="container no-gutters">
 
-        <div class="col-lg-2 col-xs-12 col-sm-12">
+      <div class="row no-gutters ">
 
-          <div id="nav">
+          <div class="col-lg-12  col-xs-12 col-sm-12">
 
-            <ul class="nav nav-pills nav-stacked">
+            <nav class="navbar navbar-expand-lg navbar-light bg-light navbar fixed-top navbar-light bg-light">
 
-              {% if not current_user.is_authenticated %}
-              <li><a href="/">home</a></li>
-              {% endif %}
+                {% if not current_user.is_authenticated %}
+                <a href="/" class="ml-lg-5 navbar-brand"><h4 class="">Abokishop</h4></a>
+                {% endif %}
+                
+                {% if current_user.is_authenticated %}
+                <h4 class="">Abokishop</h4>
+                <a class="ml-lg-5 navbar-brand" href="/home">home</a>
+                {% endif %}
 
-              {% if current_user.is_authenticated %}
-              <li><a href="/home">home</a></li>
-              {% endif %}
-
-            </ul>
-
-          </div>
-
-        {% if current_user.is_authenticated %}
-
-        <div class="col-lg-10  col-xm-12">
-
-          <div id="usr-prf">
-
-            hello
-
-          </div>
+            </nav>
 
         </div>
 
-        <div class="col-lg-1 col-xs-12 col-sm-9">
+    
 
-          <div id="acct-nav">
+        <div class="col-lg-2 col-xs-12 col-sm-12 nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+          {% if not current_user.is_authenticated %}
+          <a class="nav-link" id="v-pills-child-tab" data-toggle="pill"  role="tab" aria-controls="v-pills-home" aria-selected="true" href="/login">login</a>
 
-            <ul class="nav nav-pills nav-stacked">
+          <a class="nav-link" id="v-pills-child-tab" data-toggle="pill" role="tab" aria-controls="v-pills-profile" aria-selected="false" href="/signup">signup</a>
 
-              <li><a href="#">My shop</a></li>
-
-              <li><a href="/logout">logout</a></li>
-
-            </ul>
-
-          </div>
+          {% elif current_user.is_authenticated %}
+            <a class="nav-link" id="v-pills-child-tab" data-toggle="pill" role="tab" aria-controls="v-pills-profile" aria-selected="false" href="/market">Market place</a>
+            <a class="nav-link" id="v-pills-child-tab" data-toggle="pill" role="tab" aria-controls="v-pills-profile" aria-selected="false" href="#">My shop</a>
+            <a class="nav-link" id="v-pills-child-tab" data-toggle="pill" role="tab" aria-controls="v-pills-profile" aria-selected="false" href="#">Store</a>
+            <a class="nav-link" id="v-pills-child-tab" data-toggle="pill" role="tab" aria-controls="v-pills-profile" aria-selected="false" href="#">Accounting</a>
+            <a class="nav-link" id="v-pills-child-tab" data-toggle="pill" role="tab" aria-controls="v-pills-profile" aria-selected="false" href="/logout">Logout</a>
+          {% endif %}
 
         </div>
-        {% endif %}
 
-        <div class="col-lg-8 col-xs-12 col-sm-9">
+        <div class="tab-content col-lg-8 col-xs-12 col-sm-9" id="v-pills-tabContent">
 
-          <div class="col-lg-offset-2">
+          <div class="col-lg-3 col-xs-12 col-sm-9" id="msg">
 
-            <div id="flsh-msg">
-
-              {% with messages = get_flashed_messages() %}
+            {% with messages = get_flashed_messages() %}
 
               {% if messages %}
 
@@ -71,20 +60,23 @@
 
               {% endif %}
 
-              {% endwith %}
-
-            </div>
+            {% endwith %}
 
           </div>
 
-          {% block content %}
-          {% endblock %}
+          <div class="col-lg-12 col-xs-12 col-sm-12 tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
+
+            {% block content %}
+            {% endblock %}
+
+          </div>
 
         </div>
 
-      </div>
-
     </div>
 
+    </div>
+    
+    <script src="{{ url_for('static', filename='js/bootstrap.bundle.min.js')}}"></script>
   </body>
 </html>
