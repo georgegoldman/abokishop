@@ -1,7 +1,6 @@
 from flask import Blueprint, render_template, request, request, jsonify
 from .web_forms import SignupForm, LoginForm
 from flask_login import login_required, current_user
-from . import simple_geoip
 
 view = Blueprint('view', __name__)
 
