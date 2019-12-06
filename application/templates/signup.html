@@ -1,12 +1,10 @@
 {% extends 'basic-nav.html'%}
 
-{% block content %}
+{% block unauthenticatedBox %}
 
-  <div class="">
-    <img id="img-signup" src="{{ url_for('static', filename='img/food-stall-with-cupcakes-and-sweets-fixed-market-vector-18094409.jpg')}}"  alt="">
-  </div>
+{% include 'log-template.html'%}
 
-  <div class="col-lg-6">
+  <div class="col-lg-5" id="log">
 
     <div id="form-signup">
 

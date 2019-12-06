@@ -1,15 +1,19 @@
 @media (min-width: 900px){
-    #img-signup{
+    #img-log{
         position: relative;
         left: 1.3cm;
         height: 2in;
-        width: 3in;
+        width: 2in;
     }
     
     #v-pills-tab, #v-pills-tabContent{
         margin-top: 1.5cm;
+
     }
 
+    /* #v-pills-tabContent{
+        
+    } */
 
     #v-pills-tab{
         position: fixed;
@@ -20,13 +24,22 @@
         background: lightblue !important;
     }
 
-    #v-pills-content{
-        min-height: 70vh;
+    #log{
+        margin-left: 3in;
+        height: auto;
         border-left: thick solid lightblue;
-        border-right: thick solid lightblue;
-        margin-bottom: 1.6in;
-        }
+        margin-top: -1in;
+    }
 
+    #welcome{
+        margin-top: 2cm;
+        height: 7in;
+    }
+    
+    #msg{
+        margin: 1.5cm 0cm -1cm 6in;
+    }
+    
     /* #v-pills-home{
         position: relative;
         left: 4.5in;
@@ -47,13 +60,9 @@
 }
 
 #welcome{
-
-    height: calc(100vh);
-    margin-top: -1in;
-    background-image: url("/static/imgs/quwirpvb.svg");
+    background-image: url("/static/imgs/food-stall-with-cupcakes-and-sweets-fixed-market-vector-18094409.jpg");
     background-repeat: no-repeat;
 }
-
 #v-pills-tab-link:hover{
     background-color: lightblue;
     width: 2.7in;

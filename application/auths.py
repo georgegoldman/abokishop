@@ -46,7 +46,7 @@ def login():
             login_user(user)
             return redirect(url_for('view.home'))
         else:
-            flash('invalid credentials or you probably don\'t have an account')
+            flash('invalid credentials  or you probably don\'t have an account')
             return redirect(url_for('view.login'))
 
 @auth.route('/logout')
