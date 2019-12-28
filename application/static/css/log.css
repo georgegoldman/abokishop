@@ -83,6 +83,7 @@
 
     #navigator{
         position: fixed !important;
+        font-size: 20px !important;
     }
 
     #welcom-img{
