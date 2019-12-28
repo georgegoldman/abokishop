@@ -4,18 +4,10 @@
 
 <div class="row no-gutters ">
 
-  {extends 'content.html'}
-  {% block unauthenticatedBox %}
-
-
   
-
-      <div class="mt-lg-5">
-  <center>
+      <div class="mt-lg-5 mt-5">
 
         {% include 'log-template.html'%}
-
-  </center>
       </div>
 
     <div class="col-lg-7 col-12 col-sm-12" id="log">
@@ -114,22 +106,17 @@
     
       </form>
       
+        <div class="col-lg-12 col-12">
 
-      <div>
+          <a href="/login" class="col-12 col-11 col-sm-11 col-lg-12 ml-lg-3 btn btn-primary">Login</a>
 
-        <a href="/login" class="col-11 col-sm-11 ml-lg-3 btn btn-primary">Login</a>
-
-      </div>
+        </div>
 
 
     </div>
 
-  
-  {% endblock %}
-
-
-</center>
-</div>
+  </center>
+  </div>
 
 
 

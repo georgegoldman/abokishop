@@ -3,16 +3,9 @@
 
 <div class="row no-gutters ">
 
-  {extends 'content.html'}
-  {% block unauthenticatedBox %}
-
-
-
-
-    <div class="mt-lg-5">
-      <center>
+  
+    <div class="mt-lg-5 mt-5">
       {% include 'log-template.html'%}
-      </center>
     </div>
 
 
@@ -20,8 +13,8 @@
         <center>
         <form class="" action="/login" method="post" >
 
-          <legend>Sign in</legend>
-          <span>to continue to Abokishop</span>
+          <legend>Sign in <br><span>to continue to Abokishop</span></legend>
+          
       
           <fieldset>
 
@@ -76,9 +69,9 @@
 
         </form>
 
-        <div>
+        <div class="col-lg-12 col-12 input-group">
 
-          <a href="/signup" class="col-11 ml-lg-3 btn btn-primary">Register</a>
+          <a href="/signup" class="col-11 ml-lg-3 col-lg-12 col-12 btn btn-primary">Register</a>
 
         </div>
 
@@ -86,7 +79,7 @@
       </div>
 
   
-  {% endblock %}
+
   </center>
 
 
