@@ -26,85 +26,85 @@
 
           <div class="input-group col-sm-12 col-xs-12 col-lg-12">
     
-          {{form.username(class='form-control input-lg', placeholder='Enter username')}}
-    
-          <div class="col-lg-12 col-sm-12 col-xs-12">
+            {{form.username(class='form-control input-lg input-xs input-sm', placeholder='Enter username')}}
+      
+            <div class="col-lg-12 col-sm-12 col-xs-12">
 
-            <ul>
-            {% for error in form.username.errors %}
-    
-              <li>{{ error }}</li>
-    
-            {% endfor %}
-          </ul>
+              <ul>
+              {% for error in form.username.errors %}
+      
+                <li>{{ error }}</li>
+      
+              {% endfor %}
+            </ul>
 
+            </div>
+    
           </div>
     
-        </div>
-    
-        <div class="input-group col-sm-12 col-xs-12 col-lg-12">
-    
-          {{form.email(class='form-control input-lg ', placeholder='Enter email')}}
-    
-          <div class="col-lg-12 col-sm-12 col-xs-12">
+          <div class="input-group col-sm-12 col-xs-12 col-lg-12">
+      
+            {{form.email(class='form-control input-lg input-xs input-sm', placeholder='Enter email')}}
+      
+            <div class="col-lg-12 col-sm-12 col-xs-12">
 
-            <ul>
-            {% for error in form.email.errors%}
-    
-              <li>{{error}}</li>
-    
-            {% endfor %}
-          </ul>
+              <ul>
+              {% for error in form.email.errors%}
+      
+                <li>{{error}}</li>
+      
+              {% endfor %}
+            </ul>
 
+            </div>
+      
           </div>
     
-        </div>
-    
-        <div class="input-group col-sm-12 col-xs-12 col-lg-12">
-    
-          {{form.password(class='form-control input-lg', placeholder='Enter password')}}
-    
-          <div class="col-lg-12 col-sm-12 col-xs-12">
+          <div class="input-group col-sm-12 col-xs-12 col-lg-12">
+      
+            {{form.password(class='form-control input-lg input-xs input-sm', placeholder='Enter password')}}
+      
+            <div class="col-lg-12 col-sm-12 col-xs-12">
 
-            <ul>
-            {% for error in form.password.errors %}
-    
-              <li>{{error}}</li>
-    
-            {% endfor %}
-          </ul>
+              <ul>
+              {% for error in form.password.errors %}
+      
+                <li>{{error}}</li>
+      
+              {% endfor %}
+            </ul>
 
-          <!-- updt signup -->
+            <!-- updt signup -->
 
+            </div>
+      
           </div>
     
-        </div>
-    
-        <div class="input-group col-sm-12 col-xs-12 col-lg-12">
-    
-          {{form.confirm_password(class='form-control input-lg', placeholder='Re-enter password')}}
-    
-          <div class="col-lg-12 col-xs-12 col-sm-12">
+          <div class="input-group col-sm-12 col-xs-12 col-lg-12">
+      
+            {{form.confirm_password(class='form-control input-lg input-xs input-sm', placeholder='Re-enter password')}}
+      
+            <div class="col-lg-12 col-xs-12 col-sm-12">
 
-            <ul>
-            {% for error in form.confirm_password.errors %}
-    
-              <li>{{error}}</li>
-    
-            {% endfor %}
-          </ul>
+              <ul>
+              {% for error in form.confirm_password.errors %}
+      
+                <li>{{error}}</li>
+      
+              {% endfor %}
+            </ul>
 
+            </div>
+      
           </div>
     
-        </div>
-    
-        <div class="input-group col-sm-12 col-xs-12 col-lg-12">
-    
-          {{form.submit(class='btn btn-primary btn-lg col-sm-12 col-xs-12 col-lg-12')}}
-    
-        </div>
-    
-        {{form.csrf_token }}
+          <div class="input-group col-sm-12 col-xs-12 col-lg-12">
+      
+            {{form.submit(class='btn btn-xs btn-sm btn-primary btn-lg col-sm-12 col-xs-12 col-lg-12')}}
+      
+          </div>
+      
+          {{form.csrf_token }}
 
         </fieldset>
     
