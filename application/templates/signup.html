@@ -7,31 +7,32 @@
   {extends 'content.html'}
   {% block unauthenticatedBox %}
 
-  <div id="log-2">
-  <!-- <center> -->
 
+  
 
-    <div class="mt-lg-5">
+      <div class="mt-lg-5">
+  <center>
 
-      {% include 'log-template.html'%}
+        {% include 'log-template.html'%}
 
-    </div>
+  </center>
+      </div>
 
+    <div class="col-lg-7 col-12 col-sm-12" id="log">
+  <center>
 
-      <div class="col-lg-7 col-12 col-sm-12" id="log">
-
-       <form  action="/signup" method="post">
+      <form  action="/signup" method="post">
         
-        <legend>Sign up</legend>
-        <span>with Abokishop</span>
+        <legend>Sign up <br><span>with Abokishop</span></legend>
+        
     
         <fieldset>
 
-          <div class="input-group col-sm-12 col-xs-12 col-lg-12">
+          <div class="input-group col-sm-12 col-lg-12">
     
             {{form.username(class='form-control input-lg input-xs input-sm', placeholder='Enter username')}}
       
-            <div class="col-lg-12 col-sm-12 col-xs-12">
+            <div class="col-lg-12 col-sm-12">
 
               <ul>
               {% for error in form.username.errors %}
@@ -45,11 +46,11 @@
     
           </div>
     
-          <div class="input-group col-sm-12 col-xs-12 col-lg-12">
+          <div class="input-group col-sm-12 col-lg-12">
       
             {{form.email(class='form-control input-lg input-xs input-sm', placeholder='Enter email')}}
       
-            <div class="col-lg-12 col-sm-12 col-xs-12">
+            <div class="col-lg-12 col-sm-12">
 
               <ul>
               {% for error in form.email.errors%}
@@ -63,11 +64,11 @@
       
           </div>
     
-          <div class="input-group col-sm-12 col-xs-12 col-lg-12">
+          <div class="input-group col-sm-12 col-lg-12">
       
             {{form.password(class='form-control input-lg input-xs input-sm', placeholder='Enter password')}}
       
-            <div class="col-lg-12 col-sm-12 col-xs-12">
+            <div class="col-lg-12 col-sm-12">
 
               <ul>
               {% for error in form.password.errors %}
@@ -83,11 +84,11 @@
       
           </div>
     
-          <div class="input-group col-sm-12 col-xs-12 col-lg-12">
+          <div class="input-group col-sm-12 col-lg-12">
       
             {{form.confirm_password(class='form-control input-lg input-xs input-sm', placeholder='Re-enter password')}}
       
-            <div class="col-lg-12 col-xs-12 col-sm-12">
+            <div class="col-lg-12  col-sm-12">
 
               <ul>
               {% for error in form.confirm_password.errors %}
@@ -103,7 +104,7 @@
     
           <div class="input-group col-sm-12 col-xs-12 col-lg-12">
       
-            {{form.submit(class='btn btn-primary col-sm-12 col-xs-12 col-lg-12')}}
+            {{form.submit(class='btn btn-primary col-sm-12 col-lg-12')}}
       
           </div>
       
@@ -112,22 +113,22 @@
         </fieldset>
     
       </form>
+      
 
-        <div>
+      <div>
 
-          <a href="/login" class="col-11 col-sm-11 ml-lg-3 btn btn-primary">Login</a>
-
-        </div>
-
+        <a href="/login" class="col-11 col-sm-11 ml-lg-3 btn btn-primary">Login</a>
 
       </div>
 
+
+    </div>
+
   
   {% endblock %}
-  </div>
 
-  <!-- </center> -->
 
+</center>
 </div>
 
 
