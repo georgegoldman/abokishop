@@ -1,75 +1,25 @@
-{% extends 'basic-nav.html'%}
+{% include 'links.html' %}
+{%  include 'basic-nav.html'%}
 
-{% block authenticatedBox %}
+<div class="row no-gutters ">
 
-    <!-- bootstrap card -->
-    <div class="card col-lg-3 ml-lg-3 mb-lg-5" style="display: inline-block">
-        <img src="{{url_for('static', filename='imgs/camera-coffee-composition-1509428.jpg')}}" class="card-img-top" alt="...">
-        <div class="card-body">
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    {% include 'nav.html' %}
+    {% include 'content.html' %}
+
+    {% extends 'content.html' %}
+    {% block authenticatedBox %}
+
+        <div class="card col-lg-3 ml-lg-3 mb-lg-5" style="display: inline-block">
+            <img src="{{url_for('static', filename='imgs/camera-coffee-composition-1509428.jpg')}}" class="card-img-top" alt="...">
+            <div class="card-body">
+            <p class="card-text">location details:</p>
+            
         </div>
-    </div>
 
-    <div class="card col-lg-3 ml-lg-3 mb-lg-5" style="display: inline-block">
-        <img src="{{url_for('static', filename='imgs/camera-coffee-composition-1509428.jpg')}}" class="card-img-top" alt="...">
-        <div class="card-body">
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-        </div>
-    </div>
+    {% endblock %}
 
-    <div class="card col-lg-3 ml-lg-3 mb-lg-5" style="display: inline-block">
-        <img src="{{url_for('static', filename='imgs/camera-coffee-composition-1509428.jpg')}}" class="card-img-top" alt="...">
-        <div class="card-body">
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-        </div>
-    </div>
+</div>
+<script src="{{url_for('static', filename='js/app.js')}}"></script>
 
-    <div class="card col-lg-3 ml-lg-3 mb-lg-5" style="display: inline-block">
-        <img src="{{url_for('static', filename='imgs/camera-coffee-composition-1509428.jpg')}}" class="card-img-top" alt="...">
-        <div class="card-body">
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-        </div>
-    </div>
-
-    <div class="card col-lg-3 ml-lg-3 mb-lg-5" style="display: inline-block">
-        <img src="{{url_for('static', filename='imgs/camera-coffee-composition-1509428.jpg')}}" class="card-img-top" alt="...">
-        <div class="card-body">
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-        </div>
-    </div>
-
-    <div class="card col-lg-3 ml-lg-3 mb-lg-5" style="display: inline-block">
-        <img src="{{url_for('static', filename='imgs/camera-coffee-composition-1509428.jpg')}}" class="card-img-top" alt="...">
-        <div class="card-body">
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-        </div>
-    </div>
-
-    <div class="card col-lg-3 ml-lg-3 mb-lg-5" style="display: inline-block">
-        <img src="{{url_for('static', filename='imgs/camera-coffee-composition-1509428.jpg')}}" class="card-img-top" alt="...">
-        <div class="card-body">
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-        </div>
-    </div>
-
-    <div class="card col-lg-3 ml-lg-3 mb-lg-5" style="display: inline-block">
-        <img src="{{url_for('static', filename='imgs/camera-coffee-composition-1509428.jpg')}}" class="card-img-top" alt="...">
-        <div class="card-body">
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-        </div>
-    </div>
-
-    <div class="card col-lg-3 ml-lg-3 mb-lg-5" style="display: inline-block">
-        <img src="{{url_for('static', filename='imgs/camera-coffee-composition-1509428.jpg')}}" class="card-img-top" alt="...">
-        <div class="card-body">
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-        </div>
-    </div>
-
-    <div class="card col-lg-3 ml-lg-3 mb-lg-5" style="display: inline-block">
-        <img src="{{url_for('static', filename='imgs/camera-coffee-composition-1509428.jpg')}}" class="card-img-top" alt="...">
-        <div class="card-body">
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-        </div>
-    </div>
-{% endblock %}
+    
+    

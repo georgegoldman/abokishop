@@ -1,0 +1,29 @@
+ {% if current_user.is_authenticated %}
+        <div class="col-lg-7 col-12 col-sm-5" id="content-box" >
+            <div class="tab-content" id="v-pills-tabContent">
+            
+                <div class="tab-pane fade show active" id="v-pills-content" role="tabpanel" aria-labelledby="v-pills-home-tab">
+
+                    {% block authenticatedBox %}
+                    {% endblock %}
+
+                </div>
+            </div>
+        </div>
+
+{% else %}
+
+        <div class="col-lg-8 col-12 col-sm-2 ">
+            <div class="tab-content" id="v-pills-tabContent">
+            
+                <div class="tab-pane fade show active" id="v-pills-content" role="tabpanel" aria-labelledby="v-pills-home-tab">
+
+                    {% block unauthenticatedBox %}
+                    {% endblock %}
+
+                </div>
+            </div>
+        </div>
+
+{% endif %}
+<script src="{{url_for('static', filename='js/app.js')}}"></script>

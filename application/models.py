@@ -1,13 +1,15 @@
+from datetime import datetime
 from application import db
 from flask_login import UserMixin
+from .location import Geolocation
 
-class User(db.Model,UserMixin):
+class User(db.Model,UserMixin, Geolocation):
 
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.Text)
     email = db.Column(db.Text)
     password = db.Column(db.Text)
-    stock_post = db.relationship('StockPost', backref='user', lazy='dynamic')
+    shop = db.relationship('Shop', backref='shop', lazy='dynamic')
 
     def __init__(self, username, email, password):
         self.username = username
@@ -15,22 +17,46 @@ class User(db.Model,UserMixin):
         self.password = password
 
     def __repr__(self):
-        return f'< User {self.id}>'
+        return f'[{self.id}, {self.username}]'
 
-class StockPost(db.Model):
+class Shop(db.Model, Geolocation):
 
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.Text)
-    about = db.Column(db.Text)
-    cost = db.Column(db.Integer)
-    user_id  = db.Column(db.Integer, db.ForeignKey('user.id'))
+    shop_name = db.Column(db.Text)
+    owner = db.Column(db.Integer, db.ForeignKey('user.id'))
+    goods = db.relationship('Goods', backref='goods', lazy='dynamic')
+    service = db.Column(db.Text)
+    service_type = db.Column(db.Text)
 
-    def __init__(self, name, about, cost, user_id):
-        self.name = name
-        self.about = about
-        self.cost = cost
-        self.user_id = user_id
+    def __init__(self, shop, owner, service, service_type):
+        self.shop_name = shop_name
+        self.owner = owner
+        self.service = service
+        self.service_type = service_type
 
 
     def __repr__(self):
-        return f'< StockPost {self.id}>'
+        return f'[{self.shop_name}, {self.service}]'
+
+class Goods(db.Model, Geolocation):
+
+    id = db.Column(db.Integer, primary_key=True)
+    goods_name = db.Column(db.Text)
+    description = db.Column(db.Text)
+    price = db.Column(db.Integer)
+    date = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
+    shop_id = db.Column(db.Integer, db.ForeignKey('shop.id'), nullable=False)
+
+
+
+    def __init__(self, goods_name, description, price):
+        self.goods_name = goods_name
+        self.description = description
+        self.price = price
+
+    def __repr__(self):
+        return f'[{self.goods_name}, {self.description}, {self.price}]'
+
+
+
+

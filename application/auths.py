@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, flash, redirect, url_for, Markup
+from flask import Blueprint, flash, redirect, url_for, Markup, request
 from flask_login import login_user, logout_user, login_required
 from .web_forms import SignupForm, LoginForm
 from .models import User
@@ -27,15 +27,16 @@ def signup():
             user = User(username=username, email=email, password=generate_password_hash(password, method='sha256'))
             db.session.add(user)
             db.session.commit()
-            flash('Account created')
-            return redirect(url_for('view.login'))
 
-    return render_template('signup.html', form=form)
+            flash(Markup(f"Account created, create a shop or <form method='POST' action='/login?email={email}' class='alert-link'><button class='btn btn-primary'>login</button></form>"))
+            return redirect(url_for('view.create_shop_form'))
+
+    return redirect(url_for('view.signup'))
 
 @auth.route('/login', methods=['POST'])
 def login():
     form = LoginForm()
-
+    
     if form.validate_on_submit():
         email = form.email.data
         password = form.password.data
@@ -46,8 +47,17 @@ def login():
             login_user(user)
             return redirect(url_for('view.home'))
         else:
-            flash('invalid credentials  or you probably don\'t have an account')
+            flash('Unable to verify')
             return redirect(url_for('view.login'))
+    else:
+        email  = request.args.get('email')
+        user = User.query.filter_by(email=email).first()
+        if user:
+            login_user(user)
+            return redirect(url_for('view.home'))
+
+
+
 
 @auth.route('/logout')
 @login_required

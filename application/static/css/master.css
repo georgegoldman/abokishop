@@ -7,41 +7,81 @@
     }
     
     #v-pills-tab, #v-pills-tabContent{
-        margin-top: 1.5cm;
+        border-left: thick solid blanchedalmond;
+        
     }
 
 
     #v-pills-tab{
         position: fixed;
-    }
-
-    #footer{
-        height: 20vh;
-        background: lightblue !important;
+        width: 2.8in;
     }
 
     #v-pills-content{
-        min-height: 70vh;
-        border-left: thick solid lightblue;
-        border-right: thick solid lightblue;
-        margin-bottom: 1.6in;
-        }
+        min-height: 100vh;
+        padding: 7px !important;
+    }
 
-    /* #v-pills-home{
+    #store{
+        display: inline-block;
+    }
+
+    #msg{
+        margin-top: 1.55cm;
+        margin-left: 2.8in;
+    }
+
+    #nav-btn{
+        display: none;
+    }
+    #v-pills-tab-link:hover{
+        background-color: whitesmoke;
+        width: 2.7in;
+    }
+
+}
+
+@media(max-width: 900px){
+
+    .header-title{
+        word-spacing: 0px;
+        margin-left: -7px;
+    }
+    #navigator{
+        font-size: 20px !important;
+    }
+
+    #v-pills-tab{
+        position: fixed;
+        margin-top: 1.5cm;
+        display: none;
+        background-color: whitesmoke;
+        min-height: 100vh;
+    }
+
+    #v-pills-tabContent{
+        margin-top: 2cm;
         position: relative;
-        left: 4.5in;
-        top: 2cm;
-    } */
+    }
 
+    #content-box{
+        display: block;
+    }
+
+    #store{
+        display: block;
+    }
+
+    #nav-btn-2{
+        text-align: -webkit-left;
+    }
+
+    #v-pills-tab-link:hover{
+        background-color: whitesmoke;
+    }
 }
-/* nav{
-    position: fixed;
-} */
 
-#v-pills-tab{
-}
-
-#v-pills-child-tab:active{
+#v-pills-child-tab:visited{
     background: lightblue !important;
     height: auto;
 }
@@ -49,12 +89,9 @@
 #welcome{
 
     height: calc(100vh);
-    margin-top: -1in;
     background-image: url("/static/imgs/quwirpvb.svg");
     background-repeat: no-repeat;
 }
 
-#v-pills-tab-link:hover{
-    background-color: lightblue;
-    width: 2.7in;
-}
+
+

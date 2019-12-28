@@ -37,3 +37,5 @@ SQLAlchemy-Utils==0.34.2
 WTForms==2.2.1
 wtforms-html5==0.2.2
 WTForms-SQLAlchemy==0.1
+geocoder==1.38.1
+reverse-geocoder==1.5.1

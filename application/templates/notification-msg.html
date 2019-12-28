@@ -1,0 +1,13 @@
+<div class="alert-primary" id="msg">
+
+    {% with messages = get_flashed_messages() %}
+
+        {% if messages or not messages %}
+            
+        <span><font color="black">{{messages[0]}}</font></span>
+
+        {% endif %}
+
+    {% endwith %}
+
+</div>

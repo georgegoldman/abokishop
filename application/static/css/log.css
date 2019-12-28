@@ -7,16 +7,16 @@
     }
     
     #v-pills-tab, #v-pills-tabContent{
-        margin-top: 1.5cm;
-
+        border-left: thick solid blanchedalmond;
     }
 
-    /* #v-pills-tabContent{
-        
-    } */
+    #v-pills-tabContent{
+        padding: 7px !important;
+    }
 
     #v-pills-tab{
         position: fixed;
+        width: 2.8in;
     }
 
     #footer{
@@ -27,17 +27,32 @@
     #log{
         margin-left: 3in;
         height: auto;
-        border-left: thick solid lightblue;
+        border-left: thick solid blanchedalmond;
         margin-top: -1in;
     }
 
     #welcome{
         margin-top: 2cm;
-        height: 7in;
+        min-height: 7in;
+    }
+
+    #welcom-img{
+        height: 6in;
+        width: 6in;
     }
     
     #msg{
-        margin: 1.5cm 0cm -1cm 6in;
+        margin-top: 1.7cm;
+        margin-left: 7in;
+    }
+
+    #v-pills-tab-link:hover{
+        background-color: whitesmoke;
+        width: 2.7in;
+    }
+
+    #nav-btn{
+        display: none;
     }
     
     /* #v-pills-home{
@@ -47,10 +62,61 @@
     } */
 
 }
+
+@media (max-width: 900px){
+    .header-title{
+        font-size: x-small;
+        word-spacing: 0px;
+        margin-left: -7px;
+    }
+
+    #v-pills-tab, #v-pills-tabContent{
+        margin-top: 1.5cm;
+        margin-bottom: 0px;
+    }
+
+    #v-pills-tab{
+        position: absolute;
+        top: 2.3in;
+        right: 1cm;
+        text-align: center;
+    }
+
+    #navigator{
+        position: fixed !important;
+    }
+
+    #welcom-img{
+        height: 3in;
+        width: 3in;
+    }
+
+    #welcome{
+        margin-top: 2cm;
+        /* visibility: hidden; */
+
+    }
+
+    #img-log{
+        height: 2cm;
+        width: 2cm;
+        margin-top: 1cm;
+    }
+    #log{
+        margin-top: 1cm;
+    }
+
+    #welcome-auth{
+        color: white;
+    }
+
+    #log-2{
+        text-align: -webkit-center;
+    }
 /* nav{
     position: fixed;
 } */
-
+}
 #v-pills-tab{
 }
 
@@ -59,11 +125,3 @@
     height: auto;
 }
 
-#welcome{
-    background-image: url("/static/imgs/food-stall-with-cupcakes-and-sweets-fixed-market-vector-18094409.jpg");
-    background-repeat: no-repeat;
-}
-#v-pills-tab-link:hover{
-    background-color: lightblue;
-    width: 2.7in;
-}

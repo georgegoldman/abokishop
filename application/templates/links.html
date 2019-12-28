@@ -1,0 +1,12 @@
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Abokishop</title>
+    {{ fontawesome_html() }}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+    {% if current_user.is_authenticated %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/master.css') }}">
+    {% else %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/log.css') }}">
+    {% endif %}
+  </head>

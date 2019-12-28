@@ -1,71 +1,94 @@
-{% extends 'basic-nav.html' %}
+{% include 'links.html' %}
+{% include 'basic-nav.html' %}
 
-{% block unauthenticatedBox %}
+<div class="row no-gutters ">
 
-{% include 'log-template.html'%}
+  {extends 'content.html'}
+  {% block unauthenticatedBox %}
 
-  <div class="col-lg-5 col-12 col-sm-12" id="log">
+  <div id="log-2">
+  <!-- <center> -->
 
-    <form class="" action="/login" method="post" >
 
-      <legend>login</legend>
-  
-      <fieldset>
+    <div class="mt-lg-5">
 
-        <div class="input-group col-sm-9 col-xs-12 col-lg-12">
-    
-          {{form.email(class='form-control input-lg col-lg-12', placeholder='Enter email')}}
-    
-          <div class="col-sm-9 col-xs-12 col-lg-12">
-            <ul>
-    
-            {% for error in form.email.errors%}
-    
-              <li>{{error}}</li>
-    
-            {% endfor %}
-    
-          </ul>
-          </div>
-    
+      {% include 'log-template.html'%}
+
+    </div>
+
+
+      <div class="col-lg-7 col-12 col-sm-12" id="log">
+
+        <form class="" action="/login" method="post" >
+      
+          <fieldset>
+
+            <div class="input-group col-sm-9 col-12 col-lg-12">
+        
+              {{form.email(class='form-control input-lg col-lg-12', placeholder='Enter email')}}
+        
+              <div class="col-sm-9 col-12 col-lg-12">
+                <ul>
+        
+                {% for error in form.email.errors%}
+        
+                  <li>{{error}}</li>
+        
+                {% endfor %}
+        
+              </ul>
+              </div>
+        
+            </div>
+        
+            <div class="input-group col-sm-12 col-12 col-lg-12">
+        
+              {{form.password(class='form-control input-lg', placeholder='Enter password')}}
+        
+              <div class="col-sm-12 col-12 col-lg-12">
+
+                <ul>
+        
+                {% for error in form.password.errors %}
+        
+                  <li>{{error}}</li>
+        
+                {% endfor %}
+        
+              </ul>
+
+              </div>
+        
+            </div>
+        
+            <div class="input-group col-lg-12 col-sm-12 col-12">
+        
+              {{form.submit(class='btn col-lg-12 btn-primary col-sm-9 col-xs-12 ')}}
+
+            </div>      
+        
+            {{form.csrf_token  }}
+
+          </fieldset>
+      
+
+        </form>
+
+        <div>
+
+          <a href="/signup" class="col-11 ml-lg-3 btn btn-primary">Register</a>
+
         </div>
-    
-        <div class="input-group col-sm-12 col-xs-12 col-lg-12">
-    
-          {{form.password(class='form-control input-lg', placeholder='Enter password')}}
-    
-          <div class="col-sm-12 col-xs-12 col-lg-12">
 
-            <ul>
-    
-            {% for error in form.password.errors %}
-    
-              <li>{{error}}</li>
-    
-            {% endfor %}
-    
-          </ul>
 
-          </div>
-    
-        </div>
-    
-        <div class="input-group col-lg-12 col-sm-12 col-xs-12">
-    
-          {{form.submit(class='btn col-lg-12 btn-primary col-sm-9 col-xs-12')}}
+      </div>
 
-        </div>      
-    
-        {{form.csrf_token  }}
-
-      </fieldset>
   
-
-    </form>
-
-
+  {% endblock %}
   </div>
 
-{% endblock %}
+  <!-- </center> -->
+
+</div>
 
 
