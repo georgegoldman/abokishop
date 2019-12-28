@@ -74,13 +74,6 @@
         margin-bottom: 0px;
     }
 
-    #v-pills-tab{
-        position: absolute;
-        top: 2.3in;
-        right: 1cm;
-        text-align: center;
-    }
-
     #navigator{
         position: fixed !important;
         font-size: 20px !important;
@@ -98,12 +91,13 @@
     }
 
     #img-log{
-        height: 2cm;
-        width: 2cm;
+        height: 1cm;
+        width: 1cm;
         margin-top: 1cm;
+        margin-left: -7px;
     }
     #log{
-        margin-top: 1cm;
+        margin-top: 0cm;
     }
 
     #welcome-auth{
@@ -111,7 +105,7 @@
     }
 
     #log-2{
-        text-align: -webkit-center;
+        text-align: center;
     }
 /* nav{
     position: fixed;
