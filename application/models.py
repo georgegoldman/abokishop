@@ -1,6 +1,6 @@
 from datetime import datetime
 from application import db
-from flask_login import UserMixin
+from flask_login import UserMixin, current_user
 from .location import Geolocation
 
 class User(db.Model,UserMixin, Geolocation):
@@ -26,17 +26,17 @@ class Shop(db.Model, Geolocation):
     owner = db.Column(db.Integer, db.ForeignKey('user.id'))
     goods = db.relationship('Goods', backref='goods', lazy='dynamic')
     service = db.Column(db.Text)
-    service_type = db.Column(db.Text)
+    service_description = db.Column(db.Text)
 
-    def __init__(self, shop, owner, service, service_type):
+    def __init__(self, shop_name, owner, service, service_description):
         self.shop_name = shop_name
         self.owner = owner
         self.service = service
-        self.service_type = service_type
+        self.service_description = service_description
 
 
     def __repr__(self):
-        return f'[{self.shop_name}, {self.service}]'
+        return f'[{self.shop_name}, {self.service}, {self.service_description}]'
 
 class Goods(db.Model, Geolocation):
 

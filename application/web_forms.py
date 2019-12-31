@@ -1,6 +1,8 @@
 from flask_wtf import FlaskForm
 from wtforms import TextField, PasswordField, SubmitField, IntegerField, SelectField
 from wtforms.fields.html5 import EmailField
+from wtforms.fields import StringField
+from wtforms.widgets import TextArea
 from wtforms.validators import  Length, EqualTo, ValidationError, DataRequired, Email, InputRequired
 from .models import Shop
 
@@ -21,22 +23,32 @@ class LoginForm(FlaskForm):
     submit = SubmitField('login')
 
 class CreateShop(FlaskForm):
-    '''create shop'''
-
-    shop_name = TextField('Shop name', validators=[DataRequired(message='shop name required')])
-    service = SelectField(
-        u'Service type',
-        choices=[(None,None),('Services for people','Services for people' ), ('Services for goods', 'Services for goods')], 
-        validators=[DataRequired(message='A service must be selected')]
+    shop_name = TextField('Shop name', validators=[InputRequired(message='Name required')])
+    service= SelectField(
+        u'enter choice of service',
+        choices=[
+            (None,'None'),
+            ('Automotive', 'Automotive'),
+            ('Beauty,Spa & Salon', 'Beauty,Spa & Salon'),
+            ('Building & Construction', 'Building & Construction'),
+            ('Clothing & Apparel', 'Clothing & Apparel'),
+            ('Education', 'Education'),
+            ('Entertainment', 'Entertainment'),
+            ('Event Planning & Services', 'Event Planning & Services'),
+            ('Finance & Banking', 'Finance & Banking'),
+            ('Food & Grocery', 'Food & Grocery'),
+            ('Hotel & Lodging', 'Hotel & Lodging'),
+            ('Medical Health', 'Medical Health'),
+            ('Non-Profit', 'Non-Profit'),
+            ('Professional Services', 'Professional Services'),
+            ('Public Services', 'Public Services'),
+            ('Restaurant', 'Restaurant'),
+            ('Shopping & Retail', 'Shopping & Retail'),
+            ('Travel & Transport', 'Travel & Transport'),
+            ('others', 'others')
+        ],
+        validators=[InputRequired(message='you must make a selection')]
     )
-    service_name = TextField('Type of services', validators=[DataRequired(message='service_name')])
-    create = SubmitField('Create Shop')
+    service_description = StringField(u'Enter shop description', widget=TextArea())
 
-    def validate_service(self, service):
-        if service.data == None:
-            raise ValidationError('Please selecte a service')
-
-    def validate_shop_name(self, shop_name):
-        shop = Shop.query.filter_by(shop_name=shop_name.data).first()
-        if shop:
-            raise ValidationError('Shop name already taken')
+    create = SubmitField('create')

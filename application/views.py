@@ -38,5 +38,6 @@ def store():
 @view.route('/create_shop_form')
 def create_shop_form():
 
+    user_id = request.args.get('user_id')
     form = CreateShop()
-    return render_template('create_shop.html', form=form)
+    return render_template('create_shop.html', form=form, user_id=user_id)

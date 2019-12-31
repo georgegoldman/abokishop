@@ -1,3 +1,88 @@
 {% include 'links.html'%}
 {% include 'basic-nav.html' %}
-{% incude 'notification-msg.html'%}
+{% include 'notification-msg.html'%}
+
+<div class="row no-gutters">
+
+    <div class="mt-lg-5 mt-5">
+
+        {% include 'log-template.html'%}
+
+    </div>
+
+    <div class="col-lg-7 col-12 col-sm-12" id="log">
+
+        <center>
+
+            <form action="/create_shop?user_id={{user_id}}" method="POST">
+
+                <legend>Create a shop <br> <span>with Abokishop</span></legend>
+
+                <fieldset>
+
+                    <div class="input-group col-sm-12 col-lg-12">
+
+                        {{form.shop_name(class='input-lg input-sm input-xs form-control', placeholder='Shop name')}}
+
+                        <div class="col-lg-12 col-sm-12 col-12">
+
+                            {% for error in form.shop_name.errors%}
+
+                                <span>error</span>
+
+                            {% endfor %}
+
+                        </div>
+
+                    </div><br>
+
+                    <div class="input-group col-sm-12 col-lg-12">
+
+                        {{form.service(class='input-lg input-sm input-xs form-control')}}
+
+                        <div class="col-lg-12 col-sm-12 col-12">
+
+                            {% for error in form.service.errors %}
+
+                                <span>error</span>
+
+                            {% endfor %}
+
+                        </div>
+
+                    </div><br>
+
+                    <div class="input-group col-sm-12 col-lg-12">
+
+                        {{form.service_description(col='3', rows='3', class='input-lg input-sm input-xs form-control', placeholder='Service description eg. UGOMMA store')}}
+
+                        <div class="col-lg-12 col-sm-12 col-12">
+
+                            {% for error in form.service_description.errors %}
+
+                                <span>error</span>
+
+                            {% endfor %}
+
+                        </div>
+
+                    </div><br>
+
+                    <div class="input-group col-lg-12 col-sm-12">
+
+                         {{form.create(class='btn btn-primary input-lg input-sm input-xs form-control')}}
+
+                    </div>
+
+                    {{form.csrf_token  }}
+
+                </fieldset>
+
+            </form>
+
+        </center>
+
+    </div>
+
+</div>
+

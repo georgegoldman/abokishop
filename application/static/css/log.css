@@ -93,6 +93,11 @@
     #welcome-auth{
         color: white;
     }
+
+    #msg{
+        position: relative;
+        top:3.6em;
+    }
 /* nav{
     position: fixed;
 } */

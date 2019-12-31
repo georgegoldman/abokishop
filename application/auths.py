@@ -4,8 +4,12 @@ from .web_forms import SignupForm, LoginForm
 from .models import User
 from werkzeug.security import generate_password_hash, check_password_hash
 from . import db
+from .user_query import QU, QS
 
 auth = Blueprint('auth', __name__)
+
+def q_u_e(eml):
+    return User.query.filter_by(email=eml).first()
 
 @auth.route('/signup', methods=['POST'])
 def signup():
@@ -17,21 +21,19 @@ def signup():
         email = form.email.data
         password = form.password.data
 
-        user = User.query.filter_by(email=email).first()
-
+        user = QU(email).em()
         if user:
             flash(f"Account alredy exist")
             return redirect(url_for('view.login'))
-
         else:
             user = User(username=username, email=email, password=generate_password_hash(password, method='sha256'))
             db.session.add(user)
             db.session.commit()
-
+            user_id = QU(email).idt()
             flash(Markup(f"Account created, create a shop or <form method='POST' action='/login?email={email}' class='alert-link'><button class='btn btn-primary'>login</button></form>"))
-            return redirect(url_for('view.create_shop_form'))
+            return redirect(url_for('view.create_shop_form', user_id=user_id))
+            # return redirect(url_for('view.signup'))
 
-    return redirect(url_for('view.signup'))
 
 @auth.route('/login', methods=['POST'])
 def login():
@@ -56,8 +58,12 @@ def login():
             login_user(user)
             return redirect(url_for('view.home'))
 
-
-
+@auth.route('/login_acs')
+def login_acs():
+    user_id = request.args.get('user_id')
+    user = QU(int(user_id)).em()
+    login_user(user)
+    return redirect(url_for('view.home'))
 
 @auth.route('/logout')
 @login_required
