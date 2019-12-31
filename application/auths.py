@@ -64,6 +64,7 @@ def login_acs():
     user_id_to_int = int(user_id)
     # return user_id
     user = QU(user_id_to_int).em()
+    
     login_user(user)
     return redirect(url_for('view.home'))
 
