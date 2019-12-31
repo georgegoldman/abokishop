@@ -61,9 +61,11 @@ def login():
 @auth.route('/login_acs')
 def login_acs():
     user_id = request.args.get('user_id')
-    user = QU(int(user_id)).em()
-    login_user(user)
-    return redirect(url_for('view.home'))
+
+    return user_id
+    # user = QU(int(user_id)).em()
+    # login_user(user)
+    # return redirect(url_for('view.home'))
 
 @auth.route('/logout')
 @login_required
