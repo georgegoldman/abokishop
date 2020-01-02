@@ -19,4 +19,7 @@ class QS():
         self.shop_name = shop_name
 
     def shp(self):
-        return Shop.query.filter_by(shop_name=self.shop_name).first()
+        if type(self.shop_name) == str:
+            return Shop.query.filter_by(shop_name=self.shop_name).first()
+        else:
+            return Shop.query.get(self.shop_name)

@@ -3,6 +3,7 @@ from flask import Blueprint, render_template, request, request, jsonify
 from .web_forms import SignupForm, LoginForm, CreateShop
 from flask_login import login_required, current_user
 from .models import Shop
+from .user_query import QS
 
 view = Blueprint('view', __name__)
 
@@ -31,7 +32,15 @@ def market():
 @view.route('/store')
 @login_required
 def store():
-    return render_template('store.html')
+    return render_template('store.html', current_user=current_user)
+
+@view.route('/in_shop')
+@login_required
+def in_shop():
+
+    shop_id = request.args.get('shop_id')
+    shop  = QS(int(shop_id )).shp()
+    return render_template('in_shop.html', current_user=current_user)
 
 
 @view.route('/create_shop_form')

@@ -17,7 +17,7 @@
                 <div class="card-body">
                     <h5 class="card-title text-uppercase">{{shop.shop_name}}</h5>
                     <p class="card-text">{{shop.service_description}}</p>
-                    <a href="#" class="btn btn-primary float-right">Enter shop</a>
+                    <a href="/in_shop?shop_id={{shop.id}}" class="btn btn-primary float-right">Enter shop</a>
                 </div>
             </div><br>
 
@@ -26,7 +26,7 @@
     {% endblock %}
 
 </div>
-<script src="{{url_for('static', filename='js/app.js')}}"></script>
+
 
     
     

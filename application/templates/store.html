@@ -1,24 +1,30 @@
-{% extends 'basic-nav.html'%}
+{% include 'links.html' %}
+{%  include 'basic-nav.html'%}
 
-{% block authenticatedBox %}
+<div class="row no-gutters ">
 
-<div class="col-lg-3 col-2" id="store">
-    <div class="card" style="width: 18rem;" >
-        <img src="{{url_for('static', filename='imgs/camera-coffee-composition-1509428.jpg')}}" class="card-img-top" alt="...">
-        <div class="card-body">
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-        </div>
-    </div>
+    {% include 'nav.html' %}
+
+    {% extends 'content.html' %}
+    {% block authenticatedBox %}
+
+        <p><span><i class="fas fa-user"></i> {{current_user.username}}</span></p>
+
+        {% for user_shop in current_user.shop%}
+            
+            <div class="row">
+                <div class="col-sm-6 col-11 mb-3">
+                    <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">{{user_shop.shop_name}}</h5>
+                        <p class="card-text">{{user_shop.service_description}}</p>
+                        <a href="#" class="btn btn-primary">View shop activities</a>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+
+    {% endblock %}
+
 </div>
-
-<div class="col-lg-2 col-2 ml-1 ml-lg-5 " id="store">
-
-    <div class="card" style="width: 18rem;" >
-        <img src="{{url_for('static', filename='imgs/camera-coffee-composition-1509428.jpg')}}" class="card-img-top" alt="...">
-        <div class="card-body">
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-        </div>
-    </div>
-
-</div>
-{% endblock %}
