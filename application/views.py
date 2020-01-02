@@ -2,6 +2,7 @@ import geocoder
 from flask import Blueprint, render_template, request, request, jsonify
 from .web_forms import SignupForm, LoginForm, CreateShop
 from flask_login import login_required, current_user
+from .models import Shop
 
 view = Blueprint('view', __name__)
 
@@ -19,18 +20,16 @@ def login():
     form = LoginForm()
     return render_template('login.html', form=form)
 
-@view.route('/home')
-@login_required
-def home():
-    return render_template('home.html')
 
 @view.route('/market')
+@login_required
 def market():
-    market_place = geocoder.ipinfo('me')
+    shops = Shop.query.all()
     
-    return render_template('market.html', market_place=market_place)
+    return render_template('market.html', shops=shops)
 
 @view.route('/store')
+@login_required
 def store():
     return render_template('store.html')
 

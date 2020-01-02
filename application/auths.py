@@ -47,7 +47,7 @@ def login():
 
         if user and check_password_hash(user.password, password):
             login_user(user)
-            return redirect(url_for('view.home'))
+            return redirect(url_for('view.market'))
         else:
             flash('Unable to verify')
             return redirect(url_for('view.login'))
@@ -56,7 +56,7 @@ def login():
         user = User.query.filter_by(email=email).first()
         if user:
             login_user(user)
-            return redirect(url_for('view.home'))
+            return redirect(url_for('view.market'))
 
 @auth.route('/login_acs')
 def login_acs():
@@ -66,7 +66,7 @@ def login_acs():
     user = QU(user_id_to_int).em()
     
     login_user(user)
-    return redirect(url_for('view.home'))
+    return redirect(url_for('view.market'))
 
 @auth.route('/logout')
 @login_required

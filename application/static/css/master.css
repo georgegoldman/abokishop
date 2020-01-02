@@ -7,19 +7,23 @@
     }
     
     #v-pills-tab, #v-pills-tabContent{
-        border-left: thick solid blanchedalmond;
+        margin-top: .57in;
         
     }
 
-
     #v-pills-tab{
         position: fixed;
-        width: 2.8in;
+    }
+
+    #content-box{
+        position: relative;
+        left: 2.2in;
+        min-height: 96vh;
+        border-left: thin solid black;
     }
 
     #v-pills-content{
-        min-height: 100vh;
-        padding: 7px !important;
+        padding: 7px !important;        
     }
 
     #store{
@@ -60,13 +64,12 @@
     }
 
     #v-pills-tabContent{
-        margin-top: 2cm;
-        position: relative;
+        margin-top: 1cm;
     }
 
-    #content-box{
+    /* #content-box{
         display: block;
-    }
+    } */
 
     #store{
         display: block;

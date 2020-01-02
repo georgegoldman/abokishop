@@ -4,17 +4,24 @@
 <div class="row no-gutters ">
 
     {% include 'nav.html' %}
-    {% include 'content.html' %}
 
     {% extends 'content.html' %}
     {% block authenticatedBox %}
 
-        <div class="card col-lg-3 ml-lg-3 mb-lg-5" style="display: inline-block">
-            <img src="{{url_for('static', filename='imgs/camera-coffee-composition-1509428.jpg')}}" class="card-img-top" alt="...">
-            <div class="card-body">
-            <p class="card-text">location details:</p>
-            
-        </div>
+        {% for shop in shops %}
+
+            <div class="card">
+                <div class="card-header">
+                    {{shop.service}}
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title text-uppercase">{{shop.shop_name}}</h5>
+                    <p class="card-text">{{shop.service_description}}</p>
+                    <a href="#" class="btn btn-primary float-right">Enter shop</a>
+                </div>
+            </div><br>
+
+        {% endfor %}
 
     {% endblock %}
 
