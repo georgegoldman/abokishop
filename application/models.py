@@ -9,7 +9,7 @@ class User(db.Model,UserMixin, Geolocation):
     username = db.Column(db.Text)
     email = db.Column(db.Text)
     password = db.Column(db.Text)
-    shop = db.relationship('Shop', backref='shop', lazy='dynamic')
+    shop = db.relationship('Shop', backref='user', lazy='dynamic')
 
     def __init__(self, username, email, password):
         self.username = username
@@ -24,7 +24,7 @@ class Shop(db.Model, Geolocation):
     id = db.Column(db.Integer, primary_key=True)
     shop_name = db.Column(db.Text)
     owner = db.Column(db.Integer, db.ForeignKey('user.id'))
-    goods = db.relationship('Goods', backref='goods', lazy='dynamic')
+    goods = db.relationship('Goods', backref='shop', lazy='dynamic')
     service = db.Column(db.Text)
     service_description = db.Column(db.Text)
 

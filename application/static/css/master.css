@@ -18,8 +18,8 @@
     #content-box{
         position: relative;
         left: 1.8in;
-        min-height: 96vh;
-        border-left: thin solid black;
+        min-height: 100vh;
+        border-left: 2px solid black;
     }
 
     #v-pills-content{
@@ -40,9 +40,21 @@
     }
     #v-pills-tab-link:hover{
         background-color: whitesmoke;
-        width: 2.7in;
+        width: 2.3in;
     }
 
+    #owner_profile{
+        height: 1.3in;
+        border: thick solid rgb(168, 166, 166);
+    }
+    #shop_photo{
+        height: .7in;
+        border: thick solid rgb(168, 166, 166);
+    }
+    #shop_info{
+        min-height: 77vh;
+        border:thick solid rgb(168, 166, 166);
+    }
 }
 
 @media(max-width: 900px){
@@ -67,9 +79,9 @@
         margin-top: 1cm;
     }
 
-    /* #content-box{
-        display: block;
-    } */
+    #content-box{
+        margin-top: 1cm;
+    }
 
     #store{
         display: block;
@@ -81,6 +93,19 @@
 
     #v-pills-tab-link:hover{
         background-color: whitesmoke;
+    }
+
+    #owner_profile{
+        height: 1.3in;
+        border: thick solid rgb(168, 166, 166);
+    }
+    #shop_photo{
+        height: .7in;
+        border: thick solid rgb(168, 166, 166);
+    }
+    #shop_info{
+        min-height: 77vh;
+        border:thick solid rgb(168, 166, 166);
     }
 }
 

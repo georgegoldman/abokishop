@@ -7,7 +7,81 @@
     {% extends 'content.html' %}
     {% block authenticatedBox %}
 
-        
+        <div class="row">
+
+            <div class="col-lg-3 col-7 col-sm-3">
+                <div id="owner_profile">
+
+                </div>
+
+                <div class="mt-lg-3 mt-3">
+
+                    <div id="link_up">
+                        <p><i class="fas fa-mobile"></i></p>
+                        <p><i class="fas fa-envelope-open-text"></i></p>
+                        <p><i class="fas fa-envelope"></i></p>
+                        <p><i class="fas fa-comment-alt"></i></p>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="col-lg-9 col-12">
+
+                <div id="shop_profile">
+
+                    <div class="col-lg-12 ">
+
+                        <div id="shop_photo">
+
+                            <div class="pl-lg-3 pt-lg-3 pl-3 pt-3">
+
+                                <p><i class="fas fa-store-alt"></i> <span>{{shop.shop_name}}</span></p>
+
+                            </div>
+
+
+                        </div><hr>
+
+                        <div class="mt-lg-2">
+
+                            <div id="shop_info">
+
+                                <div class="pl-lg-3 pt-lg-3 pl-3 pt-3 pr-3">
+
+                                    <p><i class="fas fa-layer-group"></i> <span>{{shop.service}}</span></p>
+                                    <p><i class="fas fa-clipboard-list"></i> <span>{{shop.service_description}}</span></p>
+                                    <p><i class="fas fa-signature"></i> <span>{{shop.user.username}}</span></p>
+
+                                </div><hr>
+
+                                <div class="pl-lg-3 pt-lg-3 pl-3 pt-3 pr-3">
+
+                                    <div>
+
+                                        <i class="fas fa-cubes align-middle"></i>
+
+                                    </div><hr><br>
+
+                                    <div>
+
+                                        <i class="fas fa-tags"></i>
+
+                                    </div><hr><br>
+
+                                </div>
+                            
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+            
+        </div>
 
     {% endblock %}
 
