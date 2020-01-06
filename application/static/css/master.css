@@ -120,6 +120,9 @@
     background-image: url("/static/imgs/quwirpvb.svg");
     background-repeat: no-repeat;
 }
+#nav-btn-close{
+    display: none;
+}
 
 
 
