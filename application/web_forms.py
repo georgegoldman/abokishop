@@ -60,7 +60,6 @@ class CreateShop(FlaskForm):
     service = SelectField(choices=
         [(service,service)for service in list_of_services
     ], validators=[InputRequired()])
-    occupation = StringField(validators=[InputRequired(message='This field is required')], render_kw={'placeholder':'enter your profrssion'})
     services_description = StringField(widget=TextArea(), render_kw={'placeholder':'Throw a little light about you shop'}, validators=[InputRequired(message='An information about your shop is needed')])
     country = SelectField(choices=[
         (country,country)for country in list_of_country
