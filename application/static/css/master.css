@@ -13,7 +13,7 @@
 
     #v-pills-tabContent{
       position: relative;
-      left: 1.8in;
+      left: 1.9in;
       min-height: 100vh;
       border-left: 2px solid whitesmoke;
     }
@@ -121,12 +121,7 @@
     height: auto;
 }
 
-#welcome{
 
-    height: calc(100vh);
-    background-image: url("/static/imgs/quwirpvb.svg");
-    background-repeat: no-repeat;
-}
 #nav-btn-close{
     display: none;
 }
@@ -135,4 +130,8 @@
 }
 #cbtn{
   display: none;
+}
+
+#img-prfl{
+  height: 3in;
 }
