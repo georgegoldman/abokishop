@@ -8,7 +8,7 @@ from flask_fontawesome import FontAwesome
 app = Flask(__name__)
 
 app.config['DEBUG']=1
-app.config['SECRET_KEY']=os.environ.genviron.get('SPECIAL_KEY')
+app.config['SECRET_KEY']=os.environ.genviron.get('SECRET')
 app.config['SQLALCHEMY_DATABASE_URI']=os.environ.genviron.get('DATABASE_URL')
 # app.config['SECRET_KEY'] = 'negjrhi52452325'
 # app.config['SQLALCHEMY_DATABASE_URI'] ='postgresql://postgres:password@localhost/abokishop'
