@@ -83,6 +83,6 @@ class UpdateAccountInfo(FlaskForm):
     image = FileField(render_kw={'class':'form-control col-lg-6'})
 
 class PostGoodsForm(FlaskForm):
-    goods_name = StringField(render_kw={'placeholder':'Goods or service name', 'class':'col-lg-6 mb-3 col-12 form-control'})
-    description = TextAreaField(render_kw={'placeholder':'Service or goods description', 'class':'col-lg-6 mb-3 col-12 form-control'})
-    price = IntegerField(widget=NumberInput(), validators=[InputRequired()], render_kw={'placeholder':'Enter Price','class':'col-lg-3 mb-3 col-12 form-control'})
+    goods_name = StringField(render_kw={'placeholder':'Stock name', 'class':'col-lg-6 mb-3 col-12 form-control'})
+    description = TextAreaField(render_kw={'placeholder':'Stock description', 'class':'col-lg-6 mb-3 col-12 form-control'})
+    price = IntegerField(widget=NumberInput(), validators=[InputRequired()], render_kw={'placeholder':'Enter Stock Price','class':'col-lg-3 mb-3 col-12 form-control'})
