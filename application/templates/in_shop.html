@@ -7,49 +7,21 @@
     {% extends 'content.html' %}
     {% block authenticatedBox %}
 
-        <div class="row no-gutters">
-
-            <div class="col-lg-3 col-12 col-sm-12">
-                
-                <div class="row no-gutters">
-
-                        <div class="col-lg-12 col-6 col-sm-4">
-
-                            <div id="owner_profile">
-
-                            </div>
-
-                        </div>
-
-                        <div class=" col-lg-12 mt-lg-3 mt-3  ml-3 col-3 col-sm-3">
-
-                            <div id="link_up">
-                                <p><i class="fas fa-mobile"></i></p>
-                                <p><i class="fas fa-envelope-open-text"></i></p>
-                                <p><i class="fas fa-envelope"></i></p>
-                                <p><i class="fas fa-comment-alt"></i></p>
-                            </div>
-
-                        </div>
-
-                </div>
-
-            </div>
-
-            <div class="col-lg-9 col-12">
-
-                <div id="shop_profile">
-
                     <div class="col-lg-12 ">
 
                         <div id="shop_photo">
 
-                            <div class="pl-lg-3 pt-lg-3 pl-3 pt-3">
+                            <div class="">
 
-                                <p><i class="fas fa-store-alt"></i> <span>{{shop.shop_name}}</span></p>
+                                <p><i class="fas fa-store-alt"></i> {{shop.shop_name}}</p>
 
+                            </div><hr>
+
+                            <div class="">
+                                <p><i class="fas fa-mobile"></i></p>
+                                <p><i class="fas fa-envelope"></i></p>
+                                <p><i class="fas fa-comment-alt"></i></p>
                             </div>
-
 
                         </div><hr>
 
@@ -57,15 +29,13 @@
 
                             <div id="shop_info">
 
-                                <div class="pl-lg-3 pt-lg-3 pl-3 pt-3 pr-3">
+                                <div class="">
 
-                                    <p><i class="fas fa-layer-group"></i> <span>{{shop.service}}</span></p>
-                                    <p><i class="fas fa-clipboard-list"></i> <span>{{shop.service_description}}</span></p>
-                                    <p><i class="fas fa-signature"></i> <span>{{shop.user.username}}</span></p>
+                                    <p><i class="fas fa-layer-group"></i> {{shop.service}}</p>
+                                    <p><i class="fas fa-clipboard-list"></i> {{shop.service_description}}</p>
+                                    <p><i class="fas fa-signature"></i> {{shop.shop_owner.username}}</p>
 
                                 </div><hr>
-
-                                <div class="pl-lg-3 pt-lg-3 pl-3 pt-3 pr-3">
 
                                     <div>
 
@@ -79,19 +49,47 @@
 
                                     </div><hr><br>
 
-                                </div>
-                            
+                                    <form class="" action="#" method="post">
+
+                                        {% for field in form %}
+
+                                          <div class="input-group col-12 col-lg-12 col-sm-12 mb-3">
+
+                                            {{field()}}
+
+                                              {% if field.errors %}
+
+                                                {% for error in field.errors %}
+                                                  <div class="col-12 mt-lg-5">
+                                                    <span>{{error}}</span>
+                                                  </div>
+                                                {% endfor %}
+
+                                              {% endif %}
+                                            </div>
+                                        {% endfor %}
+
+                                        <div class="input-group">
+
+                                          <button type="submit" class=" btn btn-primary">submit</button>
+
+                                        </div>
+
+                                    </form><br>
+
+                                      <button type="button" class="btn btn-primary ">Add stock</button>
+
+
+
+
+
                             </div>
 
                         </div>
 
                     </div>
 
-                </div>
 
-            </div>
-            
-        </div>
 
     {% endblock %}
 

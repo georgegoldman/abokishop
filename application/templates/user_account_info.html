@@ -1,0 +1,88 @@
+{% include 'links.html' %}
+{%  include 'basic-nav.html'%}
+
+<div class="row no-gutters ">
+
+    {% include 'nav.html' %}
+
+    {% extends 'content.html' %}
+    {% block authenticatedBox %}
+
+            <div class="card col-lg-6 pb-3" style="">
+
+              <div class="row">
+
+                <img  class="card-img-top col-lg-6 mt-3 mt-lg-3" id="img-prfl" src="{{image_file}}" alt="Card image cap">
+                <div class="card-body col-lg-6">
+                  <h5 class="card-title text-dark">{{current_user.last_name}} {{current_user.first_name}}</h5>
+                  <p>shop(s):</p>
+                  <span></span>
+                    {% for shops in current_user.shop%}
+                    <p><i class="fas fa-store"></i> {{shops.name}}</p>
+                      <ul class="list-group list-group-flush">
+                        <li class="list-group-item">service(s)</li>
+                        <li class="list-group-item"><i class="fas fa-thumbtack"></i> {{shops.service}}</li>
+                        <li class="list-group-item">Description</li>
+                        <li class="list-group-item"><i class="fas fa-sticky-note"></i> {{shops.service_description}}</li>
+                      </ul>
+                    {% endfor %}
+
+                </div>
+
+
+              </div>
+
+              <div class="card-body">
+                <a href="#" onclick="edit_form()" id='ebtn' class="card-link">Edit Profile</a>
+              </div>
+
+              <div id="update_info">
+
+                <form class="text-primary" action="/update_profile" method="post" role="form" enctype="multipart/form-data">
+
+                  <legend class="pl-3">Update profile details:</legend>
+
+                  <fieldset>
+
+                    {% for field in form %}
+
+                      <div class="input-group col-12 col-lg-12 col-sm-12 mb-3">
+
+                        {{field()}}
+
+                          {% if field.errors %}
+
+                            {% for error in field.errors %}
+                              <div class="col-12 mt-lg-5">
+                                <span>{{error}}</span>
+                              </div>
+                            {% endfor %}
+
+                          {% endif %}
+
+                      </div>
+
+                    {% endfor %}
+
+                    <div class="input-group col-12 col-lg-12 col-sm-12">
+
+                      <button type="submit" name="button"  class="form-control btn-primary"><i class="fas fa-user-edit"></i></button>
+
+                    </div>
+
+                  </fieldset>
+
+                </form>
+
+                <div class="input-group col-12">
+
+
+                    <a href="#" type="button" id='cbtn' class="form-control btn mb-3" onclick="close_edit_form()"><i class=" fas fa-times"></i></a>
+
+
+                </div>
+
+              </div>
+
+            </div>
+    {% endblock %}

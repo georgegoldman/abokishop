@@ -9,19 +9,14 @@
     {% block authenticatedBox %}
 
         {% for user_shop in current_user.shop%}
-            
-            <div class="row">
-                <div class="col-sm-6 col-11 mb-3">
                     <div class="card">
                     <div class="card-body">
                         <h5 class="card-title">{{user_shop.shop_name}}</h5>
                         <p class="card-text">{{user_shop.service_description}}</p>
-                        <a href="#" class="float-left btn btn-secondary"><i class="fas fa-chart-line"></i></a>
-                        <a href="/in_shop?shop_id={{user_shop.id}}" class=" float-right btn btn-secondary"><i class="fas fa-store"></i></a>
+                        <a href="#" class="float-left btn btn-info"><i class="fas fa-chart-line"></i></a>
+                        <a href="/in_shop?shop_id={{user_shop.id}}" class=" float-right btn btn-warning"><i class="fas fa-store"></i></a>
                     </div>
                     </div>
-                </div>
-            </div>
         {% endfor %}
 
     {% endblock %}

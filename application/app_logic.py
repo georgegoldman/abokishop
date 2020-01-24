@@ -1,30 +1,41 @@
+import os
+import secrets
 from flask import Blueprint, redirect, url_for, flash, Markup, request
 from flask_login import login_required, current_user
-from .web_forms import CreateShop
+from .web_forms import CreateShop, UpdateAccountInfo
 from .models import Shop, User
-from . import db
-from .user_query import QS, QU
+from . import db, app
+from werkzeug import secure_filename
+from . import ALLOWED_EXTENSIONS
+
+def allowed_file(filename):
+    return '.' in filename and filename.lower().rsplit('.', 1)[1] in ALLOWED_EXTENSIONS
 
 op = Blueprint('op', __name__)
 
-@op.route('/create_shop', methods=['POST','GET'])
-def create_shop():
-    form  = CreateShop()
+
+@op.route('/update_profile', methods=['GET','POST'])
+@login_required
+def update_user_profile():
+    form = UpdateAccountInfo()
     if form.validate_on_submit():
-        user_id = request.args.get('user_id')
-        shop_name = form.shop_name.data
-        service = form.service.data
-        service_description = form.service_description.data
-        shop  = Shop.query.filter_by(shop_name=shop_name).first()
-        if shop:
-            flash('Shop already exit choose another name')
-            return redirect(url_for('view.create_shop_form'))
-        else:
-            user=QU(int(user_id)).em()
-            new_shop = Shop(shop_name=shop_name, owner=user.id, service=service, service_description=service_description)
-            db.session.add(new_shop)
+        f_name = form.first_name.data
+        l_name = form.last_name.data
+        email = form.email.data
+        image = request.files['image']
+        filename = ''
+        if image and allowed_file(image.filename):
+            filename = secure_filename(image.filename)
+            random_hex = secrets.token_hex(8)
+            _, f_ext = os.path.splitext(image.filename)
+            picture_fn = random_hex + f_ext
+            image.save(os.path.join(app.config['UPLOAD_FOLDER'], picture_fn))
+            current_user.image_file = picture_fn
+            current_user.first_name = f_name
+            current_user.last_name = l_name
+            current_user.email = email
             db.session.commit()
-
-            return redirect(url_for('auth.login_acs', user_id=user.id))
-
-        return Markup(f'shop name: {shop_name} <br> service: {service} <br> service decription: {service_description}')
+            return redirect(url_for('view.user_account_info'))
+        if form.errors:
+            flash(form.errors, 'danger')
+            return render_template('user_account_info.html', form=form)

@@ -5,7 +5,7 @@
         height: 2in;
         width: 2in;
     }
-    
+
     #v-pills-tab, #v-pills-tabContent{
         border-left: thick solid blanchedalmond;
     }
@@ -32,14 +32,13 @@
 
     #welcome{
         margin-top: 2cm;
-        min-height: 7in;
     }
 
     #welcom-img{
         height: 6in;
         width: 6in;
     }
-    
+
     #msg{
         margin-top: 1.7cm;
         margin-left: 7in;
@@ -53,7 +52,7 @@
     #nav-btn{
         display: none;
     }
-    
+
     /* #v-pills-home{
         position: relative;
         left: 4.5in;
@@ -108,4 +107,3 @@
     background: lightblue !important;
     height: auto;
 }
-

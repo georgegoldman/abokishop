@@ -1,88 +1,45 @@
-{% include 'links.html'%}
+{% include 'links.html' %}
 {% include 'basic-nav.html' %}
-{% include 'notification-msg.html'%}
+{% include 'notification-msg.html' %}
+  {% include 'log-template.html' %}
 
-<div class="row no-gutters">
 
-    <div class="mt-lg-5 mt-5">
+<form class="" action="/create_account?f_name={{u_info['first_name']}}&l_name={{u_info['last_name']}}&s_name={{u_info['shop_name']}}&password={{u_info['password']}}" method="post">
 
-        {% include 'log-template.html'%}
+  <legend class="pl-lg-3 pl-3">Signup</legend>
 
-    </div>
+  <fieldset >
 
-    <div class="col-lg-7 col-12 col-sm-12" id="log">
+    {% for field in form %}
 
-        <center>
+      <div class="input-group col-12 col-lg-4 col-sm-12 mb-3">
 
-            <form action="/create_shop?user_id={{user_id}}" method="POST">
+        {{field(class='form-control')}}
 
-                <legend>Create a shop <br> <span>with Abokishop</span></legend>
+          {% if field.errors %}
 
-                <fieldset>
+            {% for error in field.errors %}
+              <div class="col-12">
+                <span>{{error}}</span>
+              </div>
+            {% endfor %}
 
-                    <div class="input-group col-sm-12 col-lg-12">
+          {% endif %}
 
-                        {{form.shop_name(class='input-lg input-sm input-xs form-control', placeholder='Shop name')}}
+      </div>
 
-                        <div class="col-lg-12 col-sm-12 col-12">
+    {% endfor %}
 
-                            {% for error in form.shop_name.errors%}
+    <div class="input-group col-12 col-lg-4 col-sm-12">
 
-                                <span>error</span>
+      <button type="submit" name="button"  class="form-control btn-primary"><i class="fas fa-layer-group"></i></button>
 
-                            {% endfor %}
+    </div><br>
 
-                        </div>
 
-                    </div><br>
-
-                    <div class="input-group col-sm-12 col-lg-12">
-
-                        {{form.service(class='input-lg input-sm input-xs form-control')}}
-
-                        <div class="col-lg-12 col-sm-12 col-12">
-
-                            {% for error in form.service.errors %}
-
-                                <span>error</span>
-
-                            {% endfor %}
-
-                        </div>
-
-                    </div><br>
-
-                    <div class="input-group col-sm-12 col-lg-12">
-
-                        {{form.service_description(col='3', rows='3', class='input-lg input-sm input-xs form-control', placeholder='Service description eg. UGOMMA store')}}
-
-                        <div class="col-lg-12 col-sm-12 col-12">
-
-                            {% for error in form.service_description.errors %}
-
-                                <span>error</span>
-
-                            {% endfor %}
-
-                        </div>
-
-                    </div><br>
-
-                    <div class="input-group col-lg-12 col-sm-12">
-
-                         {{form.create(class='btn btn-primary input-lg input-sm input-xs form-control')}}
-
-                    </div>
-
-                    {{form.csrf_token  }}
-
-                </fieldset>
-
-            </form>
-
-        </center>
+    <div class="mb-5">
 
     </div>
+  </fieldset>
 
-</div>
-
+</form>

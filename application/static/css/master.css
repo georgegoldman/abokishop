@@ -5,25 +5,25 @@
         height: 2in;
         width: 3in;
     }
-    
+
     #v-pills-tab, #v-pills-tabContent{
-        margin-top: .57in;
-        
+        padding-top: .57in;
+
+    }
+
+    #v-pills-tabContent{
+      position: relative;
+      left: 1.8in;
+      min-height: 100vh;
+      border-left: 2px solid whitesmoke;
     }
 
     #v-pills-tab{
         position: fixed;
     }
 
-    #content-box{
-        position: relative;
-        left: 1.8in;
-        min-height: 100vh;
-        border-left: 2px solid black;
-    }
-
     #v-pills-content{
-        padding: 7px !important;        
+        padding: 7px !important;
     }
 
     #store{
@@ -44,16 +44,23 @@
     }
 
     #owner_profile{
-        height: 1.3in;
-        border: thick solid rgb(168, 166, 166);
+        /* border: thick solid rgb(168, 166, 166); */
     }
+
+    #profile_pix{
+      position: relative;
+      left : 20%;
+    }
+
     #shop_photo{
-        height: .7in;
-        border: thick solid rgb(168, 166, 166);
+        /* border: thick solid rgb(168, 166, 166); */
     }
     #shop_info{
         min-height: 77vh;
-        border:thick solid rgb(168, 166, 166);
+        /* border:thick solid rgb(168, 166, 166); */
+    }
+    #nav-btn-open, #nav-btn-close{
+      display: none;
     }
 }
 
@@ -76,11 +83,7 @@
     }
 
     #v-pills-tabContent{
-        margin-top: 1cm;
-    }
-
-    #content-box{
-        margin-top: 1cm;
+        margin-top: 2cm;
     }
 
     #store{
@@ -96,16 +99,20 @@
     }
 
     #owner_profile{
-        height: 1.3in;
-        border: thick solid rgb(168, 166, 166);
+        /* border: thick solid rgb(168, 166, 166); */
     }
+
+    #profile_pix{
+      position: relative;
+      left : 6%;
+    }
+
     #shop_photo{
-        height: .7in;
-        border: thick solid rgb(168, 166, 166);
+        /* border: thick solid rgb(168, 166, 166); */
     }
     #shop_info{
         min-height: 77vh;
-        border:thick solid rgb(168, 166, 166);
+        /* border:thick solid rgb(168, 166, 166); */
     }
 }
 
@@ -123,6 +130,9 @@
 #nav-btn-close{
     display: none;
 }
-
-
-
+#update_info{
+  display: none;
+}
+#cbtn{
+  display: none;
+}
