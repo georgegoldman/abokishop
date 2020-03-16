@@ -36,26 +36,27 @@ def login():
     form = LoginForm()
     return render_template('login.html', form=form)
 
+
 @view.route('/market')
 @login_required
 def market():
     shops = Shop.query.all()
-
-    return render_template('market.html', shops=shops)
+    return render_template('market.html', shops=shops )
 
 @view.route('/store')
 @login_required
 def store():
-    return render_template('store.html', current_user=current_user,)
+    return render_template('store.html', current_user=current_user)
 
-@view.route('/in_shop')
+
+@view.route('/<string:user>')
 @login_required
-def in_shop():
+def in_shop(user):
     form = PostGoodsForm()
     shop_id = request.args.get('shop_id')
     shop  = Shop.query.get(int(shop_id))
     image_file = url_for('static', filename = 'imgs/profile_imgs/'+current_user.image_file)
-    return render_template('in_shop.html', current_user=current_user, shop=shop, image_file=image_file, form=form)
+    return render_template('in_shop.html' , current_user=current_user, shop=shop, image_file=image_file, form=form)
 
 @view.route('/user_account_info')
 @login_required

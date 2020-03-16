@@ -9,6 +9,7 @@
     {% block authenticatedBox %}
 
         {% for shop in shops %}
+        <!-- /in_shop?shop_id={{shop.id}}& -->
 
             <div class="card ">
                 <div class="card-header ">
@@ -17,7 +18,8 @@
                 <div class="card-body">
                     <h5 class="card-title text-uppercase"><i class="fas fa-store-alt text-success"></i> {{shop.shop_name}}</h5>
                     <p class="card-text"><i class="fas fa-clipboard-list text-info"></i> {{shop.service_description}}</p>
-                    <a href="/in_shop?shop_id={{shop.id}}" class="btn btn-warning float-right"><i class="fas fa-1x fa-binoculars"></i></a>
+                    <a href="/{{shop.name}}?shop_id={{shop.id}}&" class="btn btn-warning float-right"><i
+                            class="fas fa-1x fa-binoculars"></i></a>
                 </div>
             </div><hr><br>
 
