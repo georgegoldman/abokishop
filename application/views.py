@@ -49,12 +49,12 @@ def store():
     return render_template('store.html', current_user=current_user)
 
 
-@view.route('/<string:user>')
+@view.route('/<string:user>/home')
 @login_required
 def in_shop(user):
     form = PostGoodsForm()
-    shop_id = request.args.get('shop_id')
-    shop  = Shop.query.get(int(shop_id))
+    # print(shop_id)
+    shop  = Shop.query.filter_by(name=user).first()
     image_file = url_for('static', filename = 'imgs/profile_imgs/'+current_user.image_file)
     return render_template('in_shop.html' , current_user=current_user, shop=shop, image_file=image_file, form=form)
 

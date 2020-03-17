@@ -70,6 +70,7 @@ def login():
         if shop and check_password_hash(shop.shop_owner.password, password):
             name = shop.name
             login_user(shop.shop_owner)
+            print(shop.id)
             return redirect(url_for(f'view.market', shop_id=shop.id))
     flash('Please check your log details')
     return render_template('login.html', form=form)
