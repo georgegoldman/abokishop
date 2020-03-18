@@ -8,10 +8,10 @@ from flask_fontawesome import FontAwesome
 app = Flask(__name__)
 
 app.config['DEBUG']=1
-# app.config['SECRET_KEY']=os.environ.get('SECRET')
-# app.config['SQLALCHEMY_DATABASE_URI']=os.environ.get('DATABASE_URL')
-app.config['SECRET_KEY'] = 'negjrhi52452325'
-app.config['SQLALCHEMY_DATABASE_URI'] ='postgresql://postgres:password@localhost/abokishop'
+app.config['SECRET_KEY']=os.environ.get('SECRET')
+app.config['SQLALCHEMY_DATABASE_URI']=os.environ.get('DATABASE_URL')
+# app.config['SECRET_KEY'] = 'negjrhi52452325'
+# app.config['SQLALCHEMY_DATABASE_URI'] ='postgresql://postgres:password@localhost/abokishop'
 ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg'])
 app.config['UPLOAD_FOLDER'] = os.path.realpath('.') + '/application/static/imgs/profile_imgs'
 
