@@ -37,19 +37,30 @@
 
                                 </div><hr>
 
-                                    <div>
+                                    {% for goods in shop.goods %}
 
-                                        <i class="fas fa-box-open"></i>
+                                      <div class="row">
+                                        <div class="card " style="width: 18rem;">
+                                          <div class="card-body">
+                                            <h5 class="card-title"><i class="fas fa-box-open"></i> {{goods.goods_name}}
+                                            </h5>
+                                            <h6 class="card-subtitle mb-2 text-muted">
+                                              <p>{{goods.description}}</p>
+                                              <p><i class="fas fa-clock"></i> {{goods.date}}</p>
+                                            </h6>
+                                            <p class="card-text"><i class="fas fa-tags"></i> {{goods.price}}</p>
+                                            <a href="#" class="card-link float-left"><i
+                                                class="fas fa-2x fa-bookmark"></i></a>
+                                            <a href="#" class="card-link float-right"><i
+                                                class="fas fa-2x fa-shopping-cart"></i></a>
+                                          </div>
+                                        </div>
+                                      </div>
+                                      <br>
 
-                                    </div><hr><br>
+                                    {% endfor%}
 
-                                    <div>
-
-                                        <i class="fas fa-tags"></i>
-
-                                    </div><hr><br>
-
-                                    <form class="" action="#" method="post">
+                                    <form class="" action="/addstock?shop_id={{shop.id}}" method="post">
 
                                         {% for field in form %}
 
@@ -69,23 +80,13 @@
                                             </div>
                                         {% endfor %}
 
-                                        <div class="input-group">
+                                        <div class="input-group col-lg-3">
 
-                                          <div class="">
-
-                                            <button type="submit" class="btn btn-primary">submit</button>
-
-                                          </div>
+                                          <button type="submit" class="form-control btn-primary">add stock</button>
 
                                         </div>
 
                                     </form><br>
-
-                                      <button type="button" class="btn btn-primary ">Add stock</button>
-
-
-
-
 
                             </div>
 

@@ -1,9 +1,9 @@
 import os
 import secrets
-from flask import Blueprint, redirect, url_for, flash, Markup, request
+from flask import Blueprint, redirect, url_for, flash, Markup, request, render_template
 from flask_login import login_required, current_user
-from .web_forms import CreateShop, UpdateAccountInfo
-from .models import Shop, User
+from .web_forms import CreateShop, UpdateAccountInfo, AddStock
+from .models import Shop, User, Goods
 from . import db, app
 from werkzeug import secure_filename
 from . import ALLOWED_EXTENSIONS
@@ -39,3 +39,17 @@ def update_user_profile():
         if form.errors:
             flash(form.errors, 'danger')
             return render_template('user_account_info.html', form=form)
+
+@op.route('/addstock', methods=['POST'])
+@login_required
+def add_stock():
+    form = AddStock()
+    if form.validate_on_submit():
+        stock_name = form.goods_name.data
+        description = form.description.data
+        price = form.price.data
+        shop_id = int(request.args.get('shop_id'))
+        goods = Goods(goods_name=stock_name, description=description, price=price, shop_id=shop_id)
+        db.session.add(goods)
+        db.session.commit()
+        return f' {stock_name} {description} {price} stocks are added!'

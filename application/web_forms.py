@@ -82,7 +82,7 @@ class UpdateAccountInfo(FlaskForm):
     email = EmailField(render_kw={'placeholder':'Update email', 'class':'form-control'})
     image = FileField(render_kw={'class':'form-control col-lg-6'})
 
-class PostGoodsForm(FlaskForm):
-    goods_name = StringField(render_kw={'placeholder':'Stock name', 'class':'col-lg-6 mb-3 col-12 form-control'})
-    description = TextAreaField(render_kw={'placeholder':'Stock description', 'class':'col-lg-6 mb-3 col-12 form-control'})
+class AddStock(FlaskForm):
+    goods_name = StringField(validators=[InputRequired()], render_kw={'placeholder':'Stock name', 'class':'col-lg-6 mb-3 col-12 form-control'})
+    description = TextAreaField(validators=[InputRequired()], render_kw={'placeholder':'Stock description', 'class':'col-lg-6 mb-3 col-12 form-control'})
     price = IntegerField(widget=NumberInput(), validators=[InputRequired()], render_kw={'placeholder':'Stock Price','class':'col-lg-2 col-12 form-control'})

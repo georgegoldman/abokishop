@@ -59,10 +59,11 @@ class Goods(db.Model):
 
 
 
-    def __init__(self, goods_name, description, price):
+    def __init__(self, goods_name, description, price, shop_id):
         self.goods_name = goods_name
         self.description = description
         self.price = price
+        self.shop_id = shop_id
 
     def __repr__(self):
         return f'[{self.goods_name}, {self.description}, {self.price}]'

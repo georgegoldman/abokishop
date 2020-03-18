@@ -1,7 +1,7 @@
 import os
 import geocoder
 from flask import Blueprint, render_template, request, request, jsonify, url_for, redirect
-from .web_forms import SignupForm, LoginForm, CreateShop, UpdateAccountInfo, PostGoodsForm
+from .web_forms import SignupForm, LoginForm, CreateShop, UpdateAccountInfo, AddStock
 from flask_login import login_required, current_user
 from .models import Shop
 
@@ -52,7 +52,7 @@ def store():
 @view.route('/<string:user>/home')
 @login_required
 def in_shop(user):
-    form = PostGoodsForm()
+    form = AddStock()
     # print(shop_id)
     shop  = Shop.query.filter_by(name=user).first()
     image_file = url_for('static', filename = 'imgs/profile_imgs/'+current_user.image_file)
