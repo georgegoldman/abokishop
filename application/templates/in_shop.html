@@ -13,14 +13,24 @@
 
                             <div class="">
 
+                                <div class="card" style="width: 18rem;">
+                                  <img class="card-img-top" src="..." alt="Card image cap">
+                                  <div class="card-body">
+                                    <h5 class="card-title">Card title</h5>
+                                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.
+                                    </p>
+                                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                                  </div>
+                                </div>
+
                                 <p><i class="fas fa-store-alt"></i> {{shop.name}}</p>
 
                             </div><hr>
 
                             <div class="">
-                                <p><i class="fas fa-mobile"></i></p>
-                                <p><i class="fas fa-envelope"></i></p>
-                                <p><i class="fas fa-comment-alt"></i></p>
+                                <p><i class="fas fa-mobile"></i> <span>{{shop.shop_owner.email}}</span></p>
+                                <p><i class="fas fa-envelope"></i> <span>{{shop.shop_owner.email}}</span></p>
+                                <p><i class="fas fa-comment-alt"></i> <span>{{shop.shop_owner.email}}</span></p>
                             </div>
 
                         </div><hr>
