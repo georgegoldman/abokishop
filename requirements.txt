@@ -39,3 +39,4 @@ wtforms-html5==0.2.2
 WTForms-SQLAlchemy==0.1
 geocoder==1.38.1
 reverse-geocoder==1.5.1
+pusher==2.1.4
