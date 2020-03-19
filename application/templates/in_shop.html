@@ -13,15 +13,17 @@
 
                             <div class="">
 
-                                <div class="card" style="width: 18rem;">
-                                  <img class="card-img-top" src="..." alt="Card image cap">
+                                <div class="card">
+                                  <img class="card-img-top" src="{{url_for('static', filename='imgs/page_imgs/macbook-pro-beside-papers-669619 (1).jpg')}}" alt="Card image cap">
                                   <div class="card-body">
                                     <h5 class="card-title"><i class="fas fa-store-alt"></i> {{shop.name}}</h5>
                                     <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.
                                     </p>
-                                    <a href="#" ><i class="fas fa-mobile"></i> {{shop.shop_owner.email}}</a>
-                                    <a href="#" ><i class="fas fa-envelope"></i> {{shop.shop_owner.email}}</a>
-                                    <a href="#" ><i class="fas fa-comment-alt"></i> {{shop.shop_owner.email}}</a>
+                                    <div class="row">
+                                      <div class="col-lg-2"><a href="#" ><i class="fas fa-mobile"></i> {{shop.shop_owner.email}}</a></div>
+                                      <div class="col-lg-2"><a href="#" ><i class="fas fa-envelope"></i> {{shop.shop_owner.email}}</a></div>
+                                      <div class="col-lg-2"><a href="#" ><i class="fas fa-comment-alt"></i> {{shop.shop_owner.email}}</a></div>
+                                    </div>
                                   </div>
                                 </div>
 
@@ -29,7 +31,7 @@
 
                         </div><hr>
 
-                        <div class="mt-lg-2">
+                        <div class="mt-lg-2 ">
 
                             <div id="shop_info">
 
@@ -40,29 +42,32 @@
                                     <p><i class="fas fa-signature"></i> {{shop.shop_owner.first_name}}</p>
 
                                 </div><hr>
+                                <div class="row">
 
-                                    {% for goods in shop.goods %}
+                                  {% for goods in shop.goods %}
 
-                                      <div class="row">
-                                        <div class="card " style="width: 18rem;">
-                                          <div class="card-body">
-                                            <h5 class="card-title"><i class="fas fa-box-open"></i> {{goods.goods_name}}
-                                            </h5>
-                                            <h6 class="card-subtitle mb-2 text-muted">
-                                              <p>{{goods.description}}</p>
-                                              <p><i class="fas fa-clock"></i> {{goods.date}}</p>
-                                            </h6>
-                                            <p class="card-text"><i class="fas fa-money-bill-wave"></i> {{goods.price}}</p>
-                                            <a href="#" class="card-link float-left"><i
-                                                class="fas fa-2x fa-bookmark"></i></a>
-                                            <a href="#" class="card-link float-right"><i
-                                                class="fas fa-2x fa-shopping-cart"></i></a>
-                                          </div>
+                                    <div class="col-lg-3">
+                                      <div class="card">
+                                        <div class="card-body">
+                                          <h5 class="card-title"><i class="fas fa-box-open"></i> {{goods.goods_name}}
+                                          </h5>
+                                          <h6 class="card-subtitle mb-2 text-muted">
+                                            <p>{{goods.description}}</p>
+                                            <p><i class="fas fa-clock"></i> {{goods.date}}</p>
+                                          </h6>
+                                          <p class="card-text"><i class="fas fa-money-bill-wave"></i> {{goods.price}}</p>
+                                          <a href="#" class="card-link float-left"><i
+                                              class="fas fa-2x fa-bookmark"></i></a>
+                                          <a href="#" class="card-link float-right"><i
+                                              class="fas fa-2x fa-shopping-cart"></i></a>
                                         </div>
                                       </div>
-                                      <br>
+                                    </div> 
 
-                                    {% endfor%}
+                                {% endfor%}
+
+                                </div>
+                                <br><hr>
 
                                     {% if current_user.first_name == shop.shop_owner.first_name %}
 

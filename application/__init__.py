@@ -1,4 +1,5 @@
 import os
+import pusher
 from flask import Flask, Markup
 from flask_login import LoginManager
 from flask_sqlalchemy import SQLAlchemy
@@ -8,12 +9,22 @@ from flask_fontawesome import FontAwesome
 app = Flask(__name__)
 
 app.config['DEBUG']=1
-app.config['SECRET_KEY']=os.environ.get('SECRET')
-app.config['SQLALCHEMY_DATABASE_URI']=os.environ.get('DATABASE_URL')
-# app.config['SECRET_KEY'] = 'negjrhi52452325'
-# app.config['SQLALCHEMY_DATABASE_URI'] ='postgresql://postgres:password@localhost/abokishop'
+# app.config['SECRET_KEY']=os.environ.get('SECRET')
+# app.config['SQLALCHEMY_DATABASE_URI']=os.environ.get('DATABASE_URL')
+app.config['SECRET_KEY'] = 'negjrhi52452325'
+app.config['SQLALCHEMY_DATABASE_URI'] ='postgresql://postgres:password@localhost/abokishop'
 ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg'])
 app.config['UPLOAD_FOLDER'] = os.path.realpath('.') + '/application/static/imgs/profile_imgs'
+
+pusher_client = pusher.Pusher(
+    app_id ='966379',
+    key = 'e271cf7723747ff31222',
+    secret='5d871e0afa95b96799bf',
+    cluster='eu',
+    ssl=True
+)
+
+pusher_client.trigger('my-channel', 'my-event', {'message': 'hello world'})
 
 
 db = SQLAlchemy(app)
