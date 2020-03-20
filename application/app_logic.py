@@ -1,10 +1,10 @@
 import os
 import secrets
-from flask import Blueprint, redirect, url_for, flash, Markup, request, render_template
+from flask import Blueprint, redirect, url_for, flash, Markup, request, render_template, jsonify, make_response
 from flask_login import login_required, current_user
 from .web_forms import CreateShop, UpdateAccountInfo, AddStock
 from .models import Shop, User, Goods
-from . import db, app
+from . import db, app, pusher_client
 from werkzeug import secure_filename
 from . import ALLOWED_EXTENSIONS
 
@@ -53,3 +53,15 @@ def add_stock():
         db.session.add(goods)
         db.session.commit()
         return f' {stock_name} {description} {price} stocks are added!'
+
+
+@op.route('/notify', methods=['POST'])
+def notify():
+    req = request.get_json()
+    user = req['user']
+    stock = req['stock']
+    print(user)
+    print(stock)
+
+    res = make_response(jsonify({'msg': f'{user} your booking for {stock} services was successful'}), 200)
+    return res

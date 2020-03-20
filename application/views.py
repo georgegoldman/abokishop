@@ -1,5 +1,6 @@
 import os
 import geocoder
+from . import pusher_client
 from flask import Blueprint, render_template, request, request, jsonify, url_for, redirect
 from .web_forms import SignupForm, LoginForm, CreateShop, UpdateAccountInfo, AddStock
 from flask_login import login_required, current_user
@@ -56,6 +57,7 @@ def in_shop(user):
     # print(shop_id)
     shop  = Shop.query.filter_by(name=user).first()
     image_file = url_for('static', filename = 'imgs/profile_imgs/'+current_user.image_file)
+    # pusher_client.trigger('my-channel', 'my-event', {'message': 'the pusher is working'})
     return render_template('in_shop.html' , current_user=current_user, shop=shop, image_file=image_file, form=form)
 
 @view.route('/user_account_info')
