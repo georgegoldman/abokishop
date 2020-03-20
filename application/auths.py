@@ -28,7 +28,7 @@ def make_shop():
         db.session.add(user)
         db.session.commit()
         new_user = User.query.filter_by(email=u_email).first()
-        return redirect(ul_for('auth.build_shop', new_user_id=new_user.id, s_name=s_name, service=service, service_description=service_description, country=country, state_or_province=state_or_province, town=town, street=street))
+        return redirect(url_for('auth.build_shop', new_user_id=new_user.id, s_name=s_name, service=service, service_description=service_description, country=country, state_or_province=state_or_province, town=town, street=street))
     u_info = {
         'first_name': f'{u_f_name}',
         'last_name':f'{u_l_name}',
