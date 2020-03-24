@@ -56,6 +56,7 @@ class Goods(db.Model):
     price = db.Column(db.Integer)
     date = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
     shop_id = db.Column(db.Integer, db.ForeignKey('shop.id'), nullable=False)
+    order = db.relationship('Order', backref='goods', lazy=True)
 
 
 
@@ -67,3 +68,39 @@ class Goods(db.Model):
 
     def __repr__(self):
         return f'[{self.goods_name}, {self.description}, {self.price}]'
+
+class Order(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    stock_ordered = db.Column(db.Text)
+    customer = db.Column(db.Text)
+    amount = db.Column(db.Integer)
+    time = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
+    stock_id = db.Column(db.Integer, db.ForeignKey('goods.id'), nullable=False)
+    notification = db.relationship('Notification', backref='order', lazy=True)
+
+    def __init__(self, stock_ordered, customer, amount, stock_id):
+        self.stock_ordered = stock_ordered
+        self.customer = customer
+        self.amount = amount
+        self.stock_id = stock_id
+
+    def __repr__(self):
+        return f'[{self.stock_ordered}, {self.customer}, {self.amount}, {self.time}, {self.stock_id}]'
+
+class Notification(db.Model):
+
+    id = db.Column(db.Integer, primary_key=True)
+    info = db.Column(db.Text)
+    date = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
+    notifier = db.Column(db.Text)
+    read = db.Column(db.Boolean, default=False)
+    order_id = db.Column(db.Integer, db.ForeignKey('order.id'), nullable=False)
+
+
+    def __init__(self, info, order_id, notifier):
+        self.info = info
+        self.order_id = order_id
+        self.notifier  = notifier
+
+    def __repr__(self):
+        return f'[{self.info}, {self.stock_id}]'

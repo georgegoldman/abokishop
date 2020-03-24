@@ -1,0 +1,44 @@
+{% include 'links.html' %}
+{%  include 'basic-nav.html'%}
+
+<div class="row no-gutters ">
+
+    {% include 'nav.html' %}
+
+    {% extends 'content.html' %}
+    {% block authenticatedBox %}
+
+            <div class="row">
+                <div class="col-lg-3">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            {% for booking in order if booking.goods.shop.shop_owner.last_name == current_user.last_name %}
+                                <div >
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <p class="card-text"><span class="float-left"><sup>{{booking.goods.shop.name}}</sup></span> <span class="">{{booking.customer}} other for {{booking.amount}} of {{booking.stock_ordered}}.</span><br>
+                                                <span><sub><a href="#" class="">Pend</a></sub></span>
+                                                <span><sub><a href="#" class=" float-right">Attend</a></sub></span>
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <hr>
+                                </div><br>
+                            {% endfor %}
+                            
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-6">
+                    <div class="row">
+                        <div class="col-lg-6">sfsfdsfd</div>
+                        <div class="col-lg-6">sfsfdsfd</div>
+                    </div>
+                </div>
+            </div>
+        
+
+    {% endblock %}
+
+</div>

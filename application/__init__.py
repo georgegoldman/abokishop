@@ -3,6 +3,8 @@ import pusher
 from flask import Flask, Markup
 from flask_login import LoginManager
 from flask_sqlalchemy import SQLAlchemy
+from flask_migrate  import Migrate, MigrateCommand
+from flask_script import Manager
 from flask_fontawesome import FontAwesome
 
 
@@ -26,11 +28,15 @@ pusher_client = pusher.Pusher(
 
 
 
-db = SQLAlchemy(app)
 fa = FontAwesome(app)
+db = SQLAlchemy(app)
+migrate = Migrate(app, db)
 
-from application import models
-db.create_all()
+manager = Manager(app)
+manager.add_command('db', MigrateCommand)
+
+# from application import models
+# db.create_all()
 
 login_manager = LoginManager(app)
 from application.models import User

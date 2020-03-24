@@ -1,7 +1,7 @@
 from flask_wtf import FlaskForm
 from flask_wtf.html5 import NumberInput
 from wtforms import StringField, PasswordField, SelectField, ValidationError, FileField, TextField, IntegerField, TextAreaField
-from wtforms.validators import InputRequired, EqualTo
+from wtforms.validators import InputRequired, EqualTo, Length
 from wtforms.fields.html5 import EmailField
 from wtforms.fields import StringField
 from wtforms.widgets import TextArea
@@ -84,5 +84,5 @@ class UpdateAccountInfo(FlaskForm):
 
 class AddStock(FlaskForm):
     goods_name = StringField(validators=[InputRequired()], render_kw={'placeholder':'Stock name', 'class':'col-lg-6 mb-3 col-12 form-control'})
-    description = TextAreaField(validators=[InputRequired()], render_kw={'placeholder':'Stock description', 'class':'col-lg-6 mb-3 col-12 form-control'})
+    description = TextAreaField(validators=[InputRequired(), Length(min=15, max=200, message='text must be more than 14 less than 70')], render_kw={'placeholder':'Stock description min character 30 max 70', 'class':'col-lg-6 mb-3 col-12 form-control'})
     price = IntegerField(widget=NumberInput(), validators=[InputRequired()], render_kw={'placeholder':'Stock Price','class':'col-lg-2 col-12 form-control'})

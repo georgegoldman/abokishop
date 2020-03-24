@@ -4,7 +4,7 @@ from . import pusher_client
 from flask import Blueprint, render_template, request, request, jsonify, url_for, redirect
 from .web_forms import SignupForm, LoginForm, CreateShop, UpdateAccountInfo, AddStock
 from flask_login import login_required, current_user
-from .models import Shop
+from .models import Shop, Notification, Goods, Order
 
 view = Blueprint('view', __name__)
 
@@ -42,27 +42,44 @@ def login():
 @login_required
 def market():
     shops = Shop.query.all()
-    return render_template('market.html', shops=shops )
+    notification = Notification.query.all()
+    Notification_ammount = Notification.query.filter_by(read=False).filter_by(notifier=current_user.last_name).count()
+    return render_template('market.html', shops=shops, Notification_ammount=Notification_ammount)
 
 @view.route('/store')
 @login_required
 def store():
-    return render_template('store.html', current_user=current_user)
+    Notification_ammount = Notification.query.filter_by(read=False).filter_by(notifier=current_user.last_name).count()
+    return render_template('store.html', current_user=current_user, Notification_ammount=Notification_ammount)
 
 
-@view.route('/<string:user>/home')
+@view.route('/<string:owner>/home')
 @login_required
-def in_shop(user):
+def in_shop(owner):
     form = AddStock()
     # print(shop_id)
-    shop  = Shop.query.filter_by(name=user).first()
+    shop  = Shop.query.filter_by(name=owner).first()
     image_file = url_for('static', filename = 'imgs/profile_imgs/'+current_user.image_file)
     # pusher_client.trigger('my-channel', 'my-event', {'message': 'the pusher is working'})
-    return render_template('in_shop.html' , current_user=current_user, shop=shop, image_file=image_file, form=form)
+    try:
+        # order = Order.query.filter_by(stock_id=shop).filter_by()
+        Notification_ammount = Notification.query.filter_by(read=False).filter_by(notifier=current_user.last_name).count()
+        notification = Notification.query.all()
+        return render_template('in_shop.html' , current_user=current_user, shop=shop, image_file=image_file, form=form, notification=notification, Notification_ammount=Notification_ammount)
+    except:
+        return render_template('in_shop.html' , current_user=current_user, shop=shop, image_file=image_file, form=form,)
 
 @view.route('/user_account_info')
 @login_required
 def user_account_info():
     form = UpdateAccountInfo()
     image_file = url_for('static', filename = 'imgs/profile_imgs/'+current_user.image_file)
-    return render_template('user_account_info.html', current_user=current_user, image_file=image_file, form=form)
+    Notification_ammount = Notification.query.filter_by(read=False).filter_by(notifier=current_user.last_name).count()
+    return render_template('user_account_info.html', current_user=current_user, image_file=image_file, form=form, Notification_ammount=Notification_ammount)
+
+@view.route('/transaction')
+@login_required
+def transaction():
+    order = Order.query.all()
+    Notification_ammount = Notification.query.filter_by(read=False).filter_by(notifier=current_user.last_name).count()
+    return render_template('transactions.html', order=order, Notification_ammount=Notification_ammount)
