@@ -70,16 +70,16 @@ def notify():
         order.amount += 1
         db.session.commit()
         info = f'{user} booked for {stock}'
-        notify = Notification(info=info, notifier=order.goods.shop.shop_owner.last_name, order_id=order.id)
+        notify = Notification(info=info, notifier=order.goods.shop.shop_owner.email, order_id=order.id)
         db.session.add(notify)
         db.session.commit()
         pusher_client.trigger('notify-channel', 'new-notification', {'msg': message})
         return redirect(url_for('view.in_shop', owner=owner))
 
-    order = Order(stock_ordered=stock, customer=user, amount=1, stock_id=goods_id)
+    order = Order(stock_ordered=stock, customer=current_user.email, amount=1, stock_id=goods_id)
     db.session.add(order)
     db.session.commit()
-    notify = Notification(info=info, notifier=order.goods.shop.shop_owner.last_name, order_id=order.id)
+    notify = Notification(info=info, notifier=order.goods.shop.shop_owner.email, order_id=order.id)
     db.session.add(notify)
     db.session.commit()
     pusher_client.trigger('notify-channel', 'new-notification', {'msg': message})

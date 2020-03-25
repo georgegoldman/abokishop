@@ -1,0 +1,26 @@
+{% include 'links.html' %}
+{%  include 'basic-nav.html'%}
+
+<div class="row no-gutters ">
+
+    {% include 'nav.html' %}
+
+    {% extends 'content.html' %}
+    {% block authenticatedBox %}
+
+    {% for booking in order if booking.goods.shop.shop_owner.email == current_user.email %}
+        <div >
+            <a href="/transaction" >
+                <div class="card">
+                    <div class="card-body">
+                            <span class="class="card-text float-left"><sup>{{booking.goods.shop.name}}</sup></span> <span class="">{{booking.customer}} other for {{booking.amount}} of {{booking.stock_ordered}}.</span></p>
+                    </div>
+                </div>
+            </a>
+            <hr>
+        </div><br>
+    {% endfor %}
+
+    {% endblock %}
+
+</div>

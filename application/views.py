@@ -43,14 +43,14 @@ def login():
 def market():
     shops = Shop.query.all()
     notification = Notification.query.all()
-    Notification_ammount = Notification.query.filter_by(read=False).filter_by(notifier=current_user.last_name).count()
-    return render_template('market.html', shops=shops, Notification_ammount=Notification_ammount)
+    notification_ammount = Notification.query.filter_by(read=False).filter_by(notifier=current_user.email).count()
+    return render_template('market.html', shops=shops, notification_ammount=notification_ammount)
 
 @view.route('/store')
 @login_required
 def store():
-    Notification_ammount = Notification.query.filter_by(read=False).filter_by(notifier=current_user.last_name).count()
-    return render_template('store.html', current_user=current_user, Notification_ammount=Notification_ammount)
+    notification_ammount = Notification.query.filter_by(read=False).filter_by(notifier=current_user.email).count()
+    return render_template('store.html', current_user=current_user, notification_ammount=notification_ammount)
 
 
 @view.route('/<string:owner>/home')
@@ -63,9 +63,9 @@ def in_shop(owner):
     # pusher_client.trigger('my-channel', 'my-event', {'message': 'the pusher is working'})
     try:
         # order = Order.query.filter_by(stock_id=shop).filter_by()
-        Notification_ammount = Notification.query.filter_by(read=False).filter_by(notifier=current_user.last_name).count()
+        notification_ammount = Notification.query.filter_by(read=False).filter_by(notifier=current_user.email).count()
         notification = Notification.query.all()
-        return render_template('in_shop.html' , current_user=current_user, shop=shop, image_file=image_file, form=form, notification=notification, Notification_ammount=Notification_ammount)
+        return render_template('in_shop.html' , current_user=current_user, shop=shop, image_file=image_file, form=form, notification=notification, notification_ammount=notification_ammount)
     except:
         return render_template('in_shop.html' , current_user=current_user, shop=shop, image_file=image_file, form=form,)
 
@@ -74,13 +74,19 @@ def in_shop(owner):
 def user_account_info():
     form = UpdateAccountInfo()
     image_file = url_for('static', filename = 'imgs/profile_imgs/'+current_user.image_file)
-    Notification_ammount = Notification.query.filter_by(read=False).filter_by(notifier=current_user.last_name).count()
-    return render_template('user_account_info.html', current_user=current_user, image_file=image_file, form=form, Notification_ammount=Notification_ammount)
+    notification_ammount = Notification.query.filter_by(read=False).filter_by(notifier=current_user.email).count()
+    return render_template('user_account_info.html', current_user=current_user, image_file=image_file, form=form, notification_ammount=notification_ammount)
 
 @view.route('/transaction')
 @login_required
 def transaction():
     order = Order.query.all()
-    Notification_ammount = Notification.query.filter_by(read=False).filter_by(notifier=current_user.last_name).count()
-    return render_template('transactions.html', order=order, Notification_ammount=Notification_ammount)#
-    
+    notification_ammount = Notification.query.filter_by(read=False).filter_by(notifier=current_user.email).count()
+    return render_template('transactions.html', order=order, notification_ammount=notification_ammount)#
+
+@view.route('/notify')
+@login_required
+def notify():
+    order = Order.query.all()
+    notification_ammount = Notification.query.filter_by(read=False).filter_by(notifier=current_user.email).count()
+    return render_template('notify.html',  order=order, notification_ammount=notification_ammount)
