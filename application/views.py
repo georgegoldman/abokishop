@@ -82,4 +82,5 @@ def user_account_info():
 def transaction():
     order = Order.query.all()
     Notification_ammount = Notification.query.filter_by(read=False).filter_by(notifier=current_user.last_name).count()
-    return render_template('transactions.html', order=order, Notification_ammount=Notification_ammount)
+    return render_template('transactions.html', order=order, Notification_ammount=Notification_ammount)#
+    
