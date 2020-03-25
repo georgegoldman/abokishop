@@ -35,8 +35,8 @@ migrate = Migrate(app, db)
 manager = Manager(app)
 manager.add_command('db', MigrateCommand)
 
-# from application import models
-# db.create_all()
+from application import models
+db.create_all()
 
 login_manager = LoginManager(app)
 from application.models import User
