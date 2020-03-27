@@ -1,5 +1,6 @@
+from flask_wtf import FlaskForm
 from flask_wtf.html5 import NumberInput
-from wtforms import Form, StringField, PasswordField, SelectField, ValidationError, FileField, TextField, IntegerField, TextAreaField
+from wtforms import StringField, PasswordField, SelectField, ValidationError, FileField, TextField, IntegerField, TextAreaField
 from wtforms.validators import InputRequired, EqualTo, Length
 from wtforms.fields.html5 import EmailField
 from wtforms.fields import StringField
@@ -40,7 +41,7 @@ def validate_email(form, field):
         raise ValidationError('This email is already in use')
 
 
-class SignupForm(Form):
+class SignupForm(FlaskForm):
 
     first_name  = StringField(validators=[InputRequired(message='First name required'), is_proper_username], render_kw={'placeholder':'first name'})
     last_name  = StringField(validators=[InputRequired(message='Last name required'), is_proper_username], render_kw={'placeholder':'Last name'})
@@ -48,12 +49,12 @@ class SignupForm(Form):
     password = PasswordField(validators=[InputRequired(message='password required'), validate_password], render_kw={'placeholder':'password'})
     confirm_password = PasswordField(validators=[InputRequired(message='password required'), validate_password, EqualTo('password', message='Passwords must match')], render_kw={'placeholder':'confirm'})
 
-class LoginForm(Form):
+class LoginForm(FlaskForm):
 
     shop_name = StringField(validators=[InputRequired(message='First name required'), ], render_kw={'placeholder':'Shop name'})
     password = PasswordField(validators=[InputRequired(message='password required'), validate_password], render_kw={'placeholder':'password'})
 
-class CreateShop(Form):
+class CreateShop(FlaskForm):
 
     email = EmailField(validators=[InputRequired(message='please enter a valid email account'), validate_email], render_kw={'placeholder':'Enter a valid email'})
     service = SelectField(choices=
@@ -75,13 +76,13 @@ class CreateShop(Form):
         if country.data == 'Select country':
             raise ValidationError('Please select a country')
 
-class UpdateAccountInfo(Form):
+class UpdateAccountInfo(FlaskForm):
     first_name = StringField(render_kw={'placeholder':'Update first name', 'autofocus':'autofocus', 'class':'form-control'})
     last_name = StringField(render_kw={'placeholder':'Update last name', 'class':'form-control'})
     email = EmailField(render_kw={'placeholder':'Update email', 'class':'form-control'})
     image = FileField(render_kw={'class':'form-control col-lg-6'})
 
-class AddStock(Form):
+class AddStock(FlaskForm):
     goods_name = StringField(validators=[InputRequired()], render_kw={'placeholder':'Stock name', 'class':'col-lg-6 mb-3 col-12 form-control'})
     description = TextAreaField(validators=[InputRequired(), Length(min=15, max=200, message='text must be more than 14 less than 70')], render_kw={'placeholder':'Stock description min character 30 max 70', 'class':'col-lg-6 mb-3 col-12 form-control'})
     price = IntegerField(widget=NumberInput(), validators=[InputRequired()], render_kw={'placeholder':'Stock Price','class':'col-lg-2 col-12 form-control'})
